@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 
-function Booking(): React.ReactElement {
+function ErrorRedirect(): React.ReactElement {
   return (
     <div>
-      <h1>Booking Portal</h1>
+      <h1>An error has occoured</h1>
       <div className="text-center">
+        Return{" "}
         <Link to="/">
           <p className="font-semibold">Home</p>
         </Link>
@@ -13,4 +14,4 @@ function Booking(): React.ReactElement {
   );
 }
 
-export default Booking;
+export default ErrorRedirect;
