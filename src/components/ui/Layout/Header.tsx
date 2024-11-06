@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 function Header(): React.ReactElement {
   return (
-    <nav className="bg-blue-500 p-4 rounded-lg flex justify-between items-center relative">
+    <nav className="bg-theme-blue p-4 rounded-lg flex justify-between items-center fixed top-0 w-full z-50 opacity-95">
       <div className="flex items-center">
         <NavLink
           to="/"
@@ -23,6 +23,12 @@ function Header(): React.ReactElement {
           className="text-white px-3 py-2 rounded-md text-sm font-medium"
         >
           Booking
+        </NavLink>
+        <NavLink
+          to="/contact"
+          className="text-white px-3 py-2 rounded-md text-sm font-medium"
+        >
+          Contact
         </NavLink>
       </div>
       <div className="absolute left-1/2 transform -translate-x-1/2">

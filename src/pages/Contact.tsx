@@ -5,7 +5,7 @@ function Contact(): React.ReactElement {
     <div>
       <h1>Contact</h1>
       <div className="text-center">
-        Return{" "}
+        Return
         <Link to="/">
           <p className="font-semibold">Home</p>
         </Link>
