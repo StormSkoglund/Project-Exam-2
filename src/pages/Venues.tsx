@@ -1,14 +1,10 @@
-import { Link } from "react-router-dom";
+import RenderVenues from "../components/ui/RenderVenues";
 
 function Venues(): React.ReactElement {
   return (
     <div>
       <h1>Find A Place To Stay Today!</h1>
-      <div className="text-center">
-        <Link to="/">
-          <p className="font-semibold">Home</p>
-        </Link>
-      </div>
+      <RenderVenues />
     </div>
   );
 }

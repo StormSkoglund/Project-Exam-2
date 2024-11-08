@@ -18,31 +18,39 @@ function RenderVenues() {
   }
 
   return (
-    <ul>
-      {data.map((venue: Venue) => (
-        <li
-          className="inline-flex justify-center align-center flex-row m-5 relative"
-          key={venue.id}
-        >
-          {venue.media.length > 0 ? (
-            <div className="relative w-60 h-72">
+    <div className="w-full flex flex-wrap justify-center mt-10">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {data.slice(0, 9).map((venue: Venue) => (
+          <li
+            key={venue.id}
+            className="flex justify-center align-center m-5 relative"
+          >
+            {venue.media.length > 0 ? (
+              <div className="relative w-36 h-64 md:w-40 md:h-60 xl:w-72 xl:h-96">
+                <img
+                  className="w-full h-full object-cover rounded-md shadow-lg"
+                  src={venue.media[0].url}
+                  alt={venue.media[0].alt}
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-25 rounded-md">
+                  <span className="text-white absolute mt-56 font-extrabold">
+                    {venue.name}
+                  </span>
+                </div>
+              </div>
+            ) : (
               <img
                 className="w-full h-full object-cover rounded-md shadow-lg"
-                src={venue.media[0].url}
-                alt={venue.media[0].alt}
-              />
-              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-25 rounded-md">
-                <span className="text-white absolute mt-56 font-extrabold">
-                  {venue.name}
-                </span>
-              </div>
-            </div>
-          ) : (
-            <span>No image available</span>
-          )}
-        </li>
-      ))}
-    </ul>
+                src="/assets/hero-image-holistay-min.png"
+                alt="A beach viewed from a bungalow's porch"
+              >
+                No image available
+              </img>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
