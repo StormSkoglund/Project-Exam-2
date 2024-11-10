@@ -42,7 +42,7 @@ function RenderVenues() {
               <img
                 className="w-full h-full object-cover rounded-md shadow-lg"
                 src="/assets/hero-image-holistay-min.png"
-                alt="A beach viewed from a bungalow's porch"
+                alt="A beach view from a bungalow's porch"
               >
                 No image available
               </img>

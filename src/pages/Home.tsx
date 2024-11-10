@@ -7,10 +7,10 @@ const Home: React.FC = () => {
       <img
         src="assets/hero-image-holistay-min.png"
         alt="A beach view from a beachside-bungalow porch"
-        className="w-full m-auto"
+        className="w-full m-auto blur-xs"
       />
 
-      <h2 className="text-slate-900 text-lg font-semibold w-10/12 m-auto">
+      <h2 className="text-slate-900 text-xl font-semibold w-10/12 m-auto mt-5">
         A Tailored Experience
       </h2>
       <p className="text-slate-900 w-10/12 m-auto">

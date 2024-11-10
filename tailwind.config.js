@@ -10,6 +10,7 @@ export default {
       opacity: {
         xs: "0.98",
       },
+      blur: { xs: "1px" },
     },
   },
   plugins: [],

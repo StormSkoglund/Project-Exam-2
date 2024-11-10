@@ -21,14 +21,14 @@ function RenderVenuesHome() {
 
   return (
     <div className="w-12/12 flex flex-row align-middle justify-center m-auto mt-10">
-      <ul className="flex flex-row space-x-2">
+      <ul className="flex flex-row">
         {slicedMap.map((result: Venue, index: number) => (
           <li
             key={index}
             className="inline-flex justify-center align-center flex-row m-5 relative"
           >
             {result.media.length > 0 ? (
-              <div className="relative w-36 h-64 md:w-40 md:h-60 xl:w-72 xl:h-96">
+              <div className="relative w-32 h-60 md:w-40 md:h-60 xl:w-72 xl:h-96">
                 <img
                   className="w-full h-full object-cover rounded-md shadow-lg"
                   src={result.media[0].url}
@@ -41,13 +41,16 @@ function RenderVenuesHome() {
                 </div>
               </div>
             ) : (
-              <img
-                className="w-full h-full object-cover rounded-md shadow-lg"
-                src="/assets/hero-image-holistay-min.png"
-                alt="A beach viewed from a bungalow's porch"
-              >
-                No image available
-              </img>
+              <>
+                <img
+                  className="w-full h-full object-cover rounded-md shadow-lg"
+                  src="/assets/hero-image-holistay-min.png"
+                  alt="A beach view from a bungalow's porch"
+                ></img>
+                <span className="text-white absolute mt-56 font-extrabold">
+                  No image available
+                </span>
+              </>
             )}
           </li>
         ))}
