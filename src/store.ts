@@ -1,5 +1,14 @@
 import { create } from "zustand";
 
+interface ModalState {
+  openLoginModal: boolean;
+  openRegisterModal: boolean;
+  handleOpenLogin: () => void;
+  handleCloseLogin: () => void;
+  handleOpenRegister: () => void;
+  handleCloseRegister: () => void;
+}
+
 export interface User {
   name: string;
   email: string;
@@ -11,14 +20,25 @@ export interface User {
   venueManager: boolean;
 }
 
-const useStore = create<{
+interface UserState {
   user: User | null;
   isLoggedIn: boolean;
   accessToken: string | null;
   setUser: (user: User) => void;
   setIsLoggedIn: (isLoggedIn: boolean) => void;
   setAccessToken: (token: string) => void;
-}>((set) => ({
+}
+
+interface StoreState extends ModalState, UserState {}
+
+const useMyStore = create<StoreState>((set) => ({
+  openLoginModal: false,
+  openRegisterModal: false,
+  handleOpenLogin: () => set({ openLoginModal: true }),
+  handleCloseLogin: () => set({ openLoginModal: false }),
+  handleOpenRegister: () => set({ openRegisterModal: true }),
+  handleCloseRegister: () => set({ openRegisterModal: false }),
+
   user: null,
   isLoggedIn: false,
   accessToken: null,
@@ -27,4 +47,4 @@ const useStore = create<{
   setAccessToken: (token) => set({ accessToken: token }),
 }));
 
-export default useStore;
+export default useMyStore;

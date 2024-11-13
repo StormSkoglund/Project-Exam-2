@@ -11,6 +11,7 @@ export default {
         xs: "0.98",
       },
       blur: { xs: "1px" },
+      screens: { custom: "1279px" },
     },
   },
   plugins: [],

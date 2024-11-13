@@ -16,6 +16,7 @@ function RegisterUser() {
   });
   const setUser = useStore((state) => state.setUser);
   const setIsLoggedIn = useStore((state) => state.setIsLoggedIn);
+  const handleCloseRegister = useStore((state) => state.handleCloseRegister);
 
   const onSubmit = async (data: User) => {
     try {
@@ -31,6 +32,7 @@ function RegisterUser() {
       setIsLoggedIn(true);
       console.log(updatedData);
       reset();
+      handleCloseRegister();
     } catch (error) {
       console.error("Error registering user:", error);
     }
@@ -38,8 +40,14 @@ function RegisterUser() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
-        <h2 className="text-3xl font-bold text-center">Register*</h2>
+      <div className="w-full max-w-md p-4 space-y-6 bg-white rounded-lg shadow-md relative">
+        <button
+          onClick={handleCloseRegister}
+          className="absolute top-2 right-2 text-slate-800 font-bold"
+        >
+          X
+        </button>
+        <h2 className="text-3xl font-bold text-center">Register</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div>
             <label
@@ -50,6 +58,8 @@ function RegisterUser() {
             </label>
             <input
               type="text"
+              id="name"
+              autoComplete="text"
               {...register("name")}
               className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
@@ -66,6 +76,8 @@ function RegisterUser() {
             </label>
             <input
               type="email"
+              id="email"
+              autoComplete="email"
               {...register("email")}
               placeholder="example@stud.noroff.no"
               className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -85,6 +97,7 @@ function RegisterUser() {
             </label>
             <input
               type="password"
+              id="password"
               {...register("password")}
               className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
@@ -102,6 +115,7 @@ function RegisterUser() {
               Avatar URL
             </label>
             <input
+              id="avatar-url"
               type="url"
               {...register("avatar.url")}
               className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -120,6 +134,7 @@ function RegisterUser() {
               Avatar Alt Text
             </label>
             <input
+              id="avatar-alt"
               type="text"
               {...register("avatar.alt")}
               className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
