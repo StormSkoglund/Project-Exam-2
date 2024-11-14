@@ -1,15 +1,10 @@
-import { Link } from "react-router-dom";
+import SelectBooking from "../components/ui/forms/booking/SelectBooking";
 
 function Booking(): React.ReactElement {
   return (
     <div>
-      <h1>Booking Portal</h1>
-
-      <div className="text-center">
-        <Link to="/">
-          <p className="font-semibold">Home</p>
-        </Link>
-      </div>
+      <h1 className="text-center text-4xl mt-40">Booking Portal</h1>
+      <SelectBooking />
     </div>
   );
 }
