@@ -20,13 +20,10 @@ function RenderVenuesHome() {
   const slicedMap = data.slice(0, 4);
 
   return (
-    <div className="w-12/12 flex flex-row align-middle justify-center m-auto mt-10">
-      <ul className="flex flex-row">
+    <div className="w-full flex flex-wrap justify-center m-auto mt-10">
+      <ul className="flex flex-wrap justify-center gap-5">
         {slicedMap.map((result: Venue, index: number) => (
-          <li
-            key={index}
-            className="inline-flex justify-center align-center flex-row m-5 relative"
-          >
+          <li key={index} className="flex justify-center items-center relative">
             {result.media.length > 0 ? (
               <div className="relative w-32 h-60 md:w-40 md:h-60 xl:w-72 xl:h-96">
                 <img
@@ -35,22 +32,22 @@ function RenderVenuesHome() {
                   alt={result.media[0].alt}
                 />
                 <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-25 rounded-md">
-                  <span className="text-white absolute mt-56 font-extrabold">
+                  <span className="text-white absolute bottom-4 font-extrabold">
                     {result.name}
                   </span>
                 </div>
               </div>
             ) : (
-              <>
+              <div className="relative w-32 h-60 md:w-40 md:h-60 xl:w-72 xl:h-96">
                 <img
                   className="w-full h-full object-cover rounded-md shadow-lg"
                   src="/assets/hero-image-holistay-min.png"
                   alt="A beach view from a bungalow's porch"
-                ></img>
-                <span className="text-white absolute mt-56 font-extrabold">
+                />
+                <span className="text-white absolute bottom-4 font-extrabold">
                   No image available
                 </span>
-              </>
+              </div>
             )}
           </li>
         ))}

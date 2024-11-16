@@ -115,7 +115,7 @@ function Header(): React.ReactElement {
           Contact
         </NavLink>
       </div>
-      <div className="absolute left-1/2 transform -translate-x-1/2 -top-10">
+      <div className="absolute left-1/2 transform -translate-x-1/2 -top-10 cursor-pointer">
         <NavLink to="/" end>
           <img
             className="w-28 custom:w-fit p-5 mt-5 mb-5"
