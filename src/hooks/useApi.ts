@@ -1,8 +1,7 @@
-//Modified Code from the Frontend Frameworks course, module 4, lesson 6 (API hook example), Zustand is used instead of UseState, which was used i the original code.
-
 import { useEffect } from "react";
 import { useApiStore, Dataset } from "../store";
 import useMyStore from "../store";
+import { apiKey } from "../utils/baseUrlAndEndpoints";
 
 interface UseApiOptions {
   headers?: HeadersInit;
@@ -31,6 +30,7 @@ function useApi(url: string, options?: UseApiOptions) {
         const headers = {
           ...options?.headers,
           Authorization: `Bearer ${accessToken}`,
+          "x-api-key": apiKey,
         };
 
         const response = await fetch(url, {

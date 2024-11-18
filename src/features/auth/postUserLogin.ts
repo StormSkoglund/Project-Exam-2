@@ -1,3 +1,6 @@
+import useMyStore from "../../store";
+import { apiUrl } from "../../utils/baseUrlAndEndpoints";
+import { loginEndpoint } from "../../utils/baseUrlAndEndpoints";
 interface LoginUser {
   email: string;
   password: string;
@@ -6,9 +9,6 @@ interface LoginUser {
 export async function postUserLogin(
   user: LoginUser
 ): Promise<{ token: string }> {
-  const apiUrl = import.meta.env.VITE_API_URL;
-  const loginEndpoint = import.meta.env.VITE_API_ENDPOINT_LOGIN;
-
   const response = await fetch(apiUrl + loginEndpoint, {
     method: "POST",
     headers: {
@@ -21,6 +21,8 @@ export async function postUserLogin(
   if (!response.ok) {
     throw new Error(json.errors?.[0]?.message || "Login failed");
   }
+
+  useMyStore.getState().setAccessToken(json.token);
 
   return json;
 }

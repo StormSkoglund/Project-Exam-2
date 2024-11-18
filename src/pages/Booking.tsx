@@ -7,6 +7,7 @@ function Booking(): React.ReactElement {
       <DisplaySingleVenue />
       <div>
         <h1 className="text-center text-4xl mt-40">Booking Portal</h1>
+
         <SelectBooking />
       </div>
     </>

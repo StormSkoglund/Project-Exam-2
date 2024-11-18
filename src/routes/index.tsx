@@ -22,7 +22,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "booking",
+        path: "booking/:venueId",
         element: <Booking />,
       },
       {

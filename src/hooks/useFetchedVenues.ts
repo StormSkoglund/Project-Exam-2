@@ -1,7 +1,6 @@
-import { useQuery } from "react-query";
-
-const apiUrl = import.meta.env.VITE_API_URL;
-const venues = import.meta.env.VITE_API_ENDPOINT_VENUES;
+import { useQuery } from "@tanstack/react-query";
+import { apiUrl } from "../utils/baseUrlAndEndpoints";
+import { venues } from "../utils/baseUrlAndEndpoints";
 
 const fetchVenues = async () => {
   const response = await fetch(`${apiUrl}${venues}`);

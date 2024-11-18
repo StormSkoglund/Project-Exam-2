@@ -1,9 +1,9 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import SkeletonSingleVenue from "../../components/ui/loaders/SkeletonSingleVenue";
 import useApiQuery from "../../hooks/useApiQuery";
 
 function DisplaySingleVenue() {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
 
   const { data, isLoading, isError } = useApiQuery(id);
 
@@ -42,6 +42,11 @@ function DisplaySingleVenue() {
             </img>
           )}
         </div>
+        <Link to={`/booking/${id}`}>
+          <button className="px-4 py-2 bg-blue-500 text-white rounded-md mt-56">
+            Book Now
+          </button>
+        </Link>
       </div>
     );
   }

@@ -32,7 +32,7 @@ function Header(): React.ReactElement {
           <NavLink
             to="/"
             end
-            className="block text-white px-3 py-2 rounded-md text-lg font-medium"
+            className="block text-white px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
             onClick={toggleMenu}
           >
             <FaHouse className="inline mr-2" />
@@ -40,7 +40,7 @@ function Header(): React.ReactElement {
           </NavLink>
           <NavLink
             to="/venues"
-            className="block text-white px-3 py-2 rounded-md text-lg font-medium"
+            className="block text-white px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
             onClick={toggleMenu}
           >
             <IoBed className="inline mr-2" />
@@ -48,7 +48,7 @@ function Header(): React.ReactElement {
           </NavLink>
           <NavLink
             to="/booking"
-            className="block text-white px-3 py-2 rounded-md text-lg font-medium"
+            className="block text-white px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
             onClick={toggleMenu}
           >
             <FaBookOpen className="inline mr-2" />
@@ -56,7 +56,7 @@ function Header(): React.ReactElement {
           </NavLink>
           <NavLink
             to="/contact"
-            className="block text-white px-3 py-2 rounded-md text-lg font-medium"
+            className="block text-white px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
             onClick={toggleMenu}
           >
             <FaPhone className="inline mr-2" />
@@ -64,12 +64,12 @@ function Header(): React.ReactElement {
           </NavLink>
           <button
             onClick={handleOpenLogin}
-            className="block text-white px-3 py-2 rounded-md text-lg font-medium"
+            className="block text-white px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
           >
             Login
           </button>
           <button
-            className="block bg-white text-slate-900 px-3 py-2 rounded-md text-lg font-medium mt-2"
+            className="block bg-white text-slate-900 px-3 py-2 rounded-md text-lg font-medium mt-2 hover:shadow-lg"
             onClick={handleOpenRegister}
           >
             Sign up
@@ -80,7 +80,7 @@ function Header(): React.ReactElement {
         <NavLink
           to="/"
           end
-          className="text-white inline-flex justify-between items-center align-middle px-3 py-2 rounded-md text-lg font-medium"
+          className="text-white inline-flex justify-between items-center align-middle px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
         >
           <div className="mx-2">
             <FaHouse />
@@ -89,7 +89,7 @@ function Header(): React.ReactElement {
         </NavLink>
         <NavLink
           to="/venues"
-          className="text-white inline-flex justify-between items-center align-middle px-3 py-2 rounded-md text-lg font-medium"
+          className="text-white inline-flex justify-between items-center align-middle px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
         >
           <div className="mx-2">
             <IoBed />
@@ -98,7 +98,7 @@ function Header(): React.ReactElement {
         </NavLink>
         <NavLink
           to="/booking"
-          className="text-white inline-flex justify-between items-center align-middle px-3 py-2 rounded-md text-lg font-medium"
+          className="text-white inline-flex justify-between items-center align-middle px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
         >
           <div className="mx-2">
             <FaBookOpen />
@@ -107,7 +107,7 @@ function Header(): React.ReactElement {
         </NavLink>
         <NavLink
           to="/contact"
-          className="text-white inline-flex justify-between items-center align-middle px-3 py-2 rounded-md text-lg font-medium"
+          className="text-white inline-flex justify-between items-center align-middle px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
         >
           <div className="mx-2">
             <FaPhone />
@@ -115,7 +115,7 @@ function Header(): React.ReactElement {
           Contact
         </NavLink>
       </div>
-      <div className="absolute left-1/2 transform -translate-x-1/2 -top-10 cursor-pointer">
+      <div className="absolute left-1/2 transform -translate-x-1/2 -top-10 cursor-pointer hover:animate-pulse">
         <NavLink to="/" end>
           <img
             className="w-28 custom:w-fit p-5 mt-5 mb-5"
@@ -127,13 +127,13 @@ function Header(): React.ReactElement {
       <div className="hidden custom:flex">
         <button
           onClick={handleOpenLogin}
-          className="text-white px-4 py-2 text-lg rounded-md font-medium mr-4"
+          className="text-white px-4 py-2 text-lg rounded-md font-medium mr-4 hover:shadow-lg"
         >
           Login
         </button>
         <button
           onClick={handleOpenRegister}
-          className="bg-white text-slate-900 px-6 py-3 rounded-md text-lg font-medium"
+          className="bg-white text-slate-900 px-6 py-3 rounded-md text-lg font-medium hover:shadow-2xl"
         >
           Sign up
         </button>

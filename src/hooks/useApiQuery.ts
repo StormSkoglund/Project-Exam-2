@@ -1,10 +1,9 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { Venue } from "./useFetchedVenues";
-
-const apiUrl = import.meta.env.VITE_API_URL;
+import { apiUrl, venueEndpoint } from "../utils/baseUrlAndEndpoints";
 
 const fetchVenue = async (id: string): Promise<Venue> => {
-  const response = await fetch(`${apiUrl}holidaze/venues/${id}`);
+  const response = await fetch(`${apiUrl}${venueEndpoint}/${id}`);
   if (!response.ok) {
     throw new Error("No response received, try again later.");
   }
@@ -13,19 +12,17 @@ const fetchVenue = async (id: string): Promise<Venue> => {
 };
 
 function useApiQuery(id: string | undefined) {
-  return useQuery<Venue>(
-    ["venue", id],
-    () => {
+  return useQuery<Venue>({
+    queryKey: ["venue", id],
+    queryFn: () => {
       if (!id) {
         throw new Error("ID is undefined");
       }
       return fetchVenue(id);
     },
-    {
-      staleTime: Infinity,
-      enabled: !!id,
-    }
-  );
+    staleTime: Infinity,
+    enabled: !!id,
+  });
 }
 
 export default useApiQuery;
