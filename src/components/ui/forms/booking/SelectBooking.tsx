@@ -1,3 +1,4 @@
+//LogRocket. (2023). React Calendar Tutorial: Build and Customize a Calendar. Available at: https://blog.logrocket.com/react-calendar-tutorial-build-customize-calendar/ (Accessed: 14 November 2024).
 import { useState, useEffect } from "react";
 import Calendar, { CalendarProps } from "react-calendar";
 import { useParams } from "react-router-dom";
@@ -21,8 +22,9 @@ function SelectBooking() {
     data: venue,
     isLoading,
     isError,
+    refetch,
   } = useVenueWithBookings(venueId || "");
-  const [date, setDate] = useState<DateValue>(new Date());
+  const [date, setDate] = useState<DateValue>(null);
 
   useEffect(() => {
     if (venue) {
@@ -30,7 +32,23 @@ function SelectBooking() {
     }
   }, [venue]);
 
+  useEffect(() => {
+    if (!venue) {
+      refetch();
+    }
+  }, [venue, refetch]);
+
   const handleDateChange: CalendarProps["onChange"] = (value) => {
+    if (Array.isArray(value)) {
+      const [start, end] = value;
+      if (start && end) {
+        const isRangeBooked = isRangeContainsBookedDates(start, end);
+        if (isRangeBooked) {
+          console.log("Selected range contains booked dates");
+          return;
+        }
+      }
+    }
     setDate(value as DateValue);
   };
 
@@ -50,6 +68,17 @@ function SelectBooking() {
     return result;
   };
 
+  const isRangeContainsBookedDates = (start: Date, end: Date) => {
+    const currentDate = new Date(start);
+    while (currentDate <= end) {
+      if (isDateBooked(currentDate)) {
+        return true;
+      }
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+    return false;
+  };
+
   const tileClassName = ({ date, view }: { date: Date; view: string }) => {
     if (view === "month") {
       if (isDateBooked(date)) {
@@ -67,6 +96,13 @@ function SelectBooking() {
     return null;
   };
 
+  const tileDisabled = ({ date, view }: { date: Date; view: string }) => {
+    if (view === "month") {
+      return isDateBooked(date);
+    }
+    return false;
+  };
+
   if (isLoading) {
     return <div>Loading booked dates...</div>;
   }
@@ -76,7 +112,7 @@ function SelectBooking() {
   }
 
   if (!venue || !venue.bookings) {
-    return <div>No bookings found</div>;
+    refetch();
   }
 
   return (
@@ -84,12 +120,16 @@ function SelectBooking() {
       <h2 className="text-center text-2xl font-bold mb-4">
         Book Accommodation
       </h2>
+      <p className="font-bold text-slate-700 px-2 py-1 m-5 p-5">
+        Dates marked in red are already booked and cannot be selected.
+      </p>
       <div className="">
         <Calendar
           onChange={handleDateChange}
           value={date}
           selectRange={true}
           tileClassName={tileClassName}
+          tileDisabled={tileDisabled}
           className="react-calendar"
         />
       </div>
@@ -108,7 +148,7 @@ function SelectBooking() {
         </div>
       ) : date ? (
         <p className="text-center mt-4">
-          <span className="font-bold bg-theme-blue text-white px-2 py-1 rounded-full">
+          <span className="font-bold bg-theme-blue text-white px-2 py-1 rounded-full mx-2">
             Selected date:
           </span>
           {date.toDateString()}
