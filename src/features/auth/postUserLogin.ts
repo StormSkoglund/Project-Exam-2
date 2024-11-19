@@ -1,6 +1,7 @@
 import useMyStore from "../../store";
 import { apiUrl } from "../../utils/baseUrlAndEndpoints";
 import { loginEndpoint } from "../../utils/baseUrlAndEndpoints";
+
 interface LoginUser {
   email: string;
   password: string;
@@ -8,7 +9,7 @@ interface LoginUser {
 
 export async function postUserLogin(
   user: LoginUser
-): Promise<{ token: string }> {
+): Promise<{ accessToken: string }> {
   const response = await fetch(apiUrl + loginEndpoint, {
     method: "POST",
     headers: {
@@ -22,7 +23,8 @@ export async function postUserLogin(
     throw new Error(json.errors?.[0]?.message || "Login failed");
   }
 
-  useMyStore.getState().setAccessToken(json.token);
+  console.log("Received Access Token:", json.data.accessToken);
+  useMyStore.getState().setAccessToken(json.data.accessToken);
 
-  return json;
+  return json.data;
 }

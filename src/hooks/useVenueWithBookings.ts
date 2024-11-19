@@ -17,7 +17,7 @@ interface Venue {
   description: string;
   media: { url: string; alt: string }[];
   price: number;
-  maxGuests: number;
+  maxGuests?: number;
   rating: number;
   created: string;
   updated: string;

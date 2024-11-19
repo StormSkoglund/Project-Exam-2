@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import useMyStore from "../../../store";
 import LoginModal from "../forms/modals/LoginModal";
 import RegisterModal from "../forms/modals/RegisterModal";
+import { FaTimes } from "react-icons/fa";
 
 function Header(): React.ReactElement {
   const { handleOpenRegister } = useMyStore();
@@ -22,12 +23,12 @@ function Header(): React.ReactElement {
           onClick={toggleMenu}
           className="text-white text-2xl focus:outline-none"
         >
-          <FaBars />
+          {isOpen ? <FaTimes /> : <FaBars />}
         </button>
         <div
           className={`${
-            isOpen ? "block" : "hidden"
-          } absolute top-16 left-0 w-full bg-theme-blue p-4 rounded-lg shadow-lg`}
+            isOpen ? "block opacity-90" : "hidden"
+          } absolute top-16 left-0 w-full bg-theme-blue p-4 rounded-lg shadow-lg `}
         >
           <NavLink
             to="/"
@@ -62,18 +63,6 @@ function Header(): React.ReactElement {
             <FaPhone className="inline mr-2" />
             Contact
           </NavLink>
-          <button
-            onClick={handleOpenLogin}
-            className="block text-white px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
-          >
-            Login
-          </button>
-          <button
-            className="block bg-white text-slate-900 px-3 py-2 rounded-md text-lg font-medium mt-2 hover:shadow-lg"
-            onClick={handleOpenRegister}
-          >
-            Sign up
-          </button>
         </div>
       </div>
       <div className="hidden custom:flex items-center">
@@ -118,22 +107,22 @@ function Header(): React.ReactElement {
       <div className="absolute left-1/2 transform -translate-x-1/2 -top-10 cursor-pointer hover:animate-pulse">
         <NavLink to="/" end>
           <img
-            className="w-28 custom:w-fit p-5 mt-5 mb-5"
+            className="w-28 sm:w-32 custom:w-fit p-5 mt-5 mb-5"
             src="/assets/holistayLogo.png"
             alt="The company logo, depicting a globe."
           />
         </NavLink>
       </div>
-      <div className="hidden custom:flex">
+      <div className="flex items-center">
         <button
           onClick={handleOpenLogin}
-          className="text-white px-4 py-2 text-lg rounded-md font-medium mr-4 hover:shadow-lg"
+          className="text-white px-2 py-1 sm:px-4 sm:py-2 text-xs sm:text-lg rounded-md font-medium mr-1 sm:mr-4 hover:shadow-lg"
         >
           Login
         </button>
         <button
           onClick={handleOpenRegister}
-          className="bg-white text-slate-900 px-6 py-3 rounded-md text-lg font-medium hover:shadow-2xl"
+          className="bg-white text-slate-900 px-2 py-1 sm:px-6 sm:py-3 rounded-md text-xs sm:text-lg font-medium hover:shadow-2xl"
         >
           Sign up
         </button>

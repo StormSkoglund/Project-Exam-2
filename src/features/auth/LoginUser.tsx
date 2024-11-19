@@ -26,7 +26,7 @@ function LoginUser() {
     try {
       const response = await postUserLogin(data);
       setIsLoggedIn(true);
-      setAccessToken(response.token);
+      setAccessToken(response.accessToken);
       console.log(data);
       reset();
       handleCloseLogin();
