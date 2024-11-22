@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import useStore from "../../store";
 import { loginSchema } from "./validationAuth";
 import { postUserLogin } from "./postUserLogin";
+import { useId } from "react";
 
 interface LoginUser {
   email: string;
@@ -10,6 +11,9 @@ interface LoginUser {
 }
 
 function LoginUser() {
+  //Stack Overflow. (2023). How to generate unique IDs for form labels in React. [online] Available at: https://stackoverflow.com/questions/29420835/how-to-generate-unique-ids-for-form-labels-in-react/71681435[Accessed 22 Nov. 2024].
+  const emailId = useId();
+  const passwordId = useId();
   const {
     register,
     handleSubmit,
@@ -48,14 +52,14 @@ function LoginUser() {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div>
             <label
-              htmlFor="email"
+              htmlFor={emailId}
               className="block text-sm font-medium text-gray-700"
             >
               Email*
             </label>
             <input
               type="email"
-              id="email"
+              id={emailId}
               autoComplete="email"
               {...register("email")}
               className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -68,14 +72,14 @@ function LoginUser() {
           </div>
           <div>
             <label
-              htmlFor="password"
+              htmlFor={passwordId}
               className="block text-sm font-medium text-gray-700"
             >
               Password*
             </label>
             <input
               type="password"
-              id="password"
+              id={passwordId}
               {...register("password")}
               className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />

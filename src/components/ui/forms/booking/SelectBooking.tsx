@@ -1,7 +1,7 @@
 //LogRocket. (2023). React Calendar Tutorial: Build and Customize a Calendar. Available at: https://blog.logrocket.com/react-calendar-tutorial-build-customize-calendar/ (Accessed: 14 November 2024).
 import { useState, useEffect } from "react";
 import Calendar, { CalendarProps } from "react-calendar";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useVenueWithBookings from "../../../../hooks/useVenueWithBookings";
 import "/src/index.css";
 import {
@@ -42,6 +42,8 @@ function SelectBooking() {
   } = useVenueWithBookings(venueId || "");
   const [date, setDate] = useState<DateValue>(null);
   const [guests, setGuests] = useState<number>(1);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (venue) {
@@ -142,15 +144,27 @@ function SelectBooking() {
         headers: headers,
         body: JSON.stringify(booking),
       });
+
       if (!response.ok) {
         const errorText = await response.text();
         throw new Error(
           `Failed to create booking: ${response.status} ${response.statusText} - ${errorText}`
         );
       }
+
       console.log("Booking created successfully");
+      setErrorMessage(null);
+      navigate("/checkout");
     } catch (error) {
-      console.error("Error creating booking:", error);
+      if (error instanceof Error) {
+        setErrorMessage(
+          `Error creating booking: ${error.message}.Please try again or contact support`
+        );
+      } else {
+        setErrorMessage(
+          "An unknown error occurred, please try again or contact support"
+        );
+      }
     }
   };
 
@@ -197,12 +211,19 @@ function SelectBooking() {
       <h2 className="text-center text-2xl font-bold mb-4">
         Book Accommodation
       </h2>
-      <div className="mt-5 p-5 font-medium text-slate-800">
+      <div className="mt-5 p-2 font-medium text-slate-800">
         -Dates highlighted in red are unavailable for booking.
       </div>
-      <div className="mb-2 p-5 font-medium text-slate-800">
-        -Today's date is highlighted with a green dashed border. Click to select
-        a start date, then an end date to book multiple days.
+      <div className="mb-2 p-2 font-medium text-slate-800">
+        -Today's date is highlighted with a green dashed border.
+      </div>
+      <div className="mb-2 p-2 font-medium text-slate-800">
+        -Click to select a start date, then an end date to book multiple days.
+        Today's date is unavailable for booking.
+      </div>
+
+      <div className="mb-2 p-2 font-medium text-slate-800">
+        -A minimum of one night is required.
       </div>
       <div className="">
         <Calendar
@@ -265,6 +286,11 @@ function SelectBooking() {
           Book Now
         </button>
       </div>
+      {errorMessage && (
+        <div className="mt-4 text-center text-white bg-red-500 rounded-sm p-5">
+          {errorMessage}
+        </div>
+      )}
     </div>
   );
 }

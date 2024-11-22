@@ -1,9 +1,11 @@
-import DisplaySingleVenue from "../features/auth/DisplaySingleVenue";
+import DisplaySingleVenue from "../components/DisplaySingleVenue";
 
 function VenuePage(): React.ReactElement {
   return (
     <div>
-      <h1>Detailed Overview</h1>
+      <h1 className="mt-40 mb-5 text-center font-normal text-5xl">
+        Detailed Overview
+      </h1>
       <DisplaySingleVenue />
     </div>
   );

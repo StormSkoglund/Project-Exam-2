@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import Checkout from "../pages/BookingCheckout";
+import Checkout from "../pages/Checkout";
 import Contact from "../pages/Contact";
 import CreateVenue from "../pages/CreateVenue";
 import Error from "../pages/ErrorRedirect";
