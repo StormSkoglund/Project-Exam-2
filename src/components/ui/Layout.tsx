@@ -1,8 +1,8 @@
-import Header from "./Header";
 import { Outlet } from "react-router-dom";
-import Footer from "./Footer";
+import Header from "./Layout/Header";
+import Footer from "./Layout/Footer";
 
-function Layout() {
+function Layout(): React.ReactElement {
   return (
     <>
       <Header />

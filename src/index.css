@@ -1,3 +1,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*My custom classes for the React Calender, used to book venues/accommodations*/
+
+.react-calendar {
+  @apply max-w-full bg-white text-[#222] rounded-2xl shadow-lg font-sans leading-[1.125em] p-2 m-2;
+}
+.react-calendar__navigation {
+  @apply flex justify-between items-center mb-4 text-slate-800;
+}
+.react-calendar__navigation button {
+  @apply hover:text-theme-blue text-slate-800 mx-1 md:mx-5 font-bold text-sm md:text-xl;
+}
+abbr[title] {
+  @apply no-underline;
+}
+.react-calendar__month-view__weekdays {
+  @apply grid grid-cols-7 text-center text-gray-500 mb-2;
+}
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  @apply bg-theme-blue text-white;
+}
+.react-calendar__tile {
+  @apply p-3 w-12 h-12 hover:bg-gray-200 rounded-full;
+}
+.react-calendar__tile--active {
+  @apply bg-theme-blue w-12 h-12 text-white rounded-full;
+}
+.react-calendar__tile--range {
+  @apply bg-theme-blue w-12 h-12 text-white rounded-full;
+}

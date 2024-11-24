@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-function ProfileManager(): React.ReactElement {
+function CreateVenue(): React.ReactElement {
   return (
     <div>
-      <h1>Manager Profile</h1>
+      <h1>Rental Management Portal</h1>
       <div className="text-center">
         <Link to="/">
           <p className="font-semibold">Home</p>
@@ -13,4 +13,4 @@ function ProfileManager(): React.ReactElement {
   );
 }
 
-export default ProfileManager;
+export default CreateVenue;
