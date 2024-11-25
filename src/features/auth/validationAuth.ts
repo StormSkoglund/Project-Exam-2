@@ -8,32 +8,27 @@ export function checkVenueManager(user: User) {
   }
 }
 
-export const registerSchema = yup
-  .object({
-    name: yup
-      .string()
-      .min(3, "Your full name must be at least 3 characters")
-      .required("Full name is required"),
-    email: yup
-      .string()
-      .email("Invalid email format")
-      .matches(emailRegex, "stud.noroff.no account is required")
-      .required("Email is required"),
-    password: yup
-      .string()
-      .matches(passwordRegex, "Please create a stronger password")
-      .required("Password is required"),
-    avatar: yup.object({
-      url: yup
-        .string()
-        .url("Invalid URL format")
-        .required("Avatar URL is required"),
-      alt: yup.string().required("Avatar alt text is required"),
-    }),
-
-    venueManager: yup.boolean().default(false),
-  })
-  .required();
+export const registerSchema = yup.object().shape({
+  name: yup
+    .string()
+    .min(3, "Your full name must be at least 3 characters")
+    .required("Full name is required"),
+  email: yup
+    .string()
+    .email("Invalid email format")
+    .matches(emailRegex, "stud.noroff.no account is required")
+    .required("Email is required"),
+  password: yup
+    .string()
+    .matches(passwordRegex, "Please create a stronger password")
+    .required("Password is required"),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref("password"), undefined], "Passwords must match")
+    .required("Confirm Password is required"),
+  bio: yup.string().optional(),
+  venueManager: yup.boolean().default(false),
+});
 
 export const loginSchema = yup
   .object({

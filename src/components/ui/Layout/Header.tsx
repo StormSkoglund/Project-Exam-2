@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaBookOpen, FaHouse, FaPhone, FaBars } from "react-icons/fa6";
+import { FaHouse, FaPhone, FaBars } from "react-icons/fa6";
 import { IoBed } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
 import useMyStore from "../../../store";
@@ -7,15 +7,14 @@ import LoginModal from "../forms/modals/LoginModal";
 import RegisterModal from "../forms/modals/RegisterModal";
 import { FaTimes } from "react-icons/fa";
 
+/*Header active links styling Stack Overflow. (2023). Styling NavLink using Tailwind CSS. [online] Available at: <https://stackoverflow.com/questions/66796367/styling-navlink-using-tailwind-css#72723231> [Accessed 24 Nov. 2024].*/
 function Header(): React.ReactElement {
   const { handleOpenRegister } = useMyStore();
   const { handleOpenLogin } = useMyStore();
   const [isOpen, setIsOpen] = useState(false);
-
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
   return (
     <nav className="bg-theme-blue p-4 custom:p-10 rounded-lg flex justify-between items-center fixed top-0 w-full z-50 opacity-95">
       <div className="flex items-center custom:hidden">
@@ -33,35 +32,36 @@ function Header(): React.ReactElement {
           <NavLink
             to="/"
             end
-            className="block text-white px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
+            className={({ isActive }) =>
+              isActive
+                ? "active-link block text-white px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
+                : "block text-white px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
+            }
             onClick={toggleMenu}
           >
-            <FaHouse className="inline mr-2" />
-            Home
+            <FaHouse className="inline mr-2" /> Home
           </NavLink>
           <NavLink
             to="/venues"
-            className="block text-white px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
+            className={({ isActive }) =>
+              isActive
+                ? "active-link block text-white px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
+                : "block text-white px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
+            }
             onClick={toggleMenu}
           >
-            <IoBed className="inline mr-2" />
-            Places To Stay
-          </NavLink>
-          <NavLink
-            to="/booking"
-            className="block text-white px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
-            onClick={toggleMenu}
-          >
-            <FaBookOpen className="inline mr-2" />
-            Booking
+            <IoBed className="inline mr-2" /> Places To Stay
           </NavLink>
           <NavLink
             to="/contact"
-            className="block text-white px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
+            className={({ isActive }) =>
+              isActive
+                ? "active-link block text-white px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
+                : "block text-white px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
+            }
             onClick={toggleMenu}
           >
-            <FaPhone className="inline mr-2" />
-            Contact
+            <FaPhone className="inline mr-2" /> Contact
           </NavLink>
         </div>
       </div>
@@ -69,7 +69,11 @@ function Header(): React.ReactElement {
         <NavLink
           to="/"
           end
-          className="text-white inline-flex justify-between items-center align-middle px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
+          className={({ isActive }) =>
+            isActive
+              ? "active-link text-white inline-flex justify-between items-center align-middle px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
+              : "text-white inline-flex justify-between items-center align-middle px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
+          }
         >
           <div className="mx-2">
             <FaHouse />
@@ -78,7 +82,11 @@ function Header(): React.ReactElement {
         </NavLink>
         <NavLink
           to="/venues"
-          className="text-white inline-flex justify-between items-center align-middle px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
+          className={({ isActive }) =>
+            isActive
+              ? "active-link text-white inline-flex justify-between items-center align-middle px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
+              : "text-white inline-flex justify-between items-center align-middle px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
+          }
         >
           <div className="mx-2">
             <IoBed />
@@ -86,17 +94,12 @@ function Header(): React.ReactElement {
           Places To Stay
         </NavLink>
         <NavLink
-          to="/booking"
-          className="text-white inline-flex justify-between items-center align-middle px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
-        >
-          <div className="mx-2">
-            <FaBookOpen />
-          </div>
-          Booking
-        </NavLink>
-        <NavLink
           to="/contact"
-          className="text-white inline-flex justify-between items-center align-middle px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
+          className={({ isActive }) =>
+            isActive
+              ? "active-link text-white inline-flex justify-between items-center align-middle px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
+              : "text-white inline-flex justify-between items-center align-middle px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
+          }
         >
           <div className="mx-2">
             <FaPhone />
@@ -127,8 +130,7 @@ function Header(): React.ReactElement {
           Sign up
         </button>
       </div>
-      <LoginModal />
-      <RegisterModal />
+      <LoginModal /> <RegisterModal />
     </nav>
   );
 }

@@ -32,3 +32,26 @@ abbr[title] {
 .react-calendar__tile--range {
   @apply bg-theme-blue w-12 h-12 text-white rounded-full;
 }
+
+/*custom fonts*/
+
+h1 {
+  @apply font-myanmar;
+}
+h2,
+h3,
+h4 {
+  @apply font-montserrat;
+}
+p {
+  @apply font-sans;
+}
+
+/*Header active links styling Stack Overflow. (2023). Styling NavLink using Tailwind CSS. [online] Available at: <https://stackoverflow.com/questions/66796367/styling-navlink-using-tailwind-css#72723231> [Accessed 24 Nov. 2024].*/
+.active-link {
+  @apply text-white font-bold border-solid border-b-4 shadow-2xl;
+}
+
+label {
+  @apply text-slate-800;
+}

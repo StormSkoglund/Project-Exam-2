@@ -1,14 +1,6 @@
 import { apiUrl } from "../../utils/baseUrlAndEndpoints";
 import { registerEndpoint } from "../../utils/baseUrlAndEndpoints";
-interface User {
-  name: string;
-  email: string;
-  password: string;
-  avatar: {
-    url: string;
-    alt: string;
-  };
-}
+import { User } from "../../store";
 
 export async function postUserRegister(user: User) {
   const response = await fetch(apiUrl + registerEndpoint, {

@@ -29,7 +29,7 @@ export async function fetchVenueWithBookings(venueId: string): Promise<Venue> {
   const headers = {
     "Content-Type": "application/json",
     Authorization: `Bearer ${accessToken}`,
-    "x-api-key": apiKey,
+    "X-Noroff-API-Key": apiKey,
   };
 
   const response = await fetch(url, { headers });

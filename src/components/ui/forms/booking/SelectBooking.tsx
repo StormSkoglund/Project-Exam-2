@@ -211,21 +211,16 @@ function SelectBooking() {
       <h2 className="text-center text-2xl font-bold mb-4">
         Book Accommodation
       </h2>
-      <div className="mt-5 p-2 font-medium text-slate-800">
-        -Dates highlighted in red are unavailable for booking.
-      </div>
-      <div className="mb-2 p-2 font-medium text-slate-800">
-        -Today's date is highlighted with a green dashed border.
-      </div>
-      <div className="mb-2 p-2 font-medium text-slate-800">
-        -Click to select a start date, then an end date to book multiple days.
-        Today's date is unavailable for booking.
-      </div>
-
-      <div className="mb-2 p-2 font-medium text-slate-800">
-        -A minimum of one night is required.
-      </div>
-      <div className="">
+      <ul className="mt-5 p-2 font-medium text-slate-800 list-disc">
+        <li>Dates highlighted in red are unavailable for booking.</li>
+        <li>Today's date is highlighted with a green dashed border.</li>
+        <li>
+          Click to select a start date, then an end date to book multiple days.
+          Today's date is unavailable for booking.
+        </li>
+        <li>A minimum of one night is required.</li>
+      </ul>
+      <div>
         <Calendar
           onChange={handleDateChange}
           value={date}

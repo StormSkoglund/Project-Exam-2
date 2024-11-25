@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import SkeletonSingleVenue from "./ui/loaders/SkeletonSingleVenue";
 import useVenueWithBookings from "../hooks/useVenueWithBookings";
-import { CalcRatings } from "./ui/calculators/CalcRatings";
+import { CalcRatings } from "./calculators/CalcRatings";
 
 function DisplayVenueBooking() {
   const { venueId } = useParams<{ venueId: string }>();
@@ -43,7 +43,7 @@ function DisplayVenueBooking() {
               />
             )}
           </div>
-          <div className="flex flex-col w-4/12 items-center align-end justify-evenly md:items-start border-solid border-2 border-slate-400 shadow-sm p-5 rounded-lg m5">
+          <div className="flex flex-col w-10/12 lg:w-5/12 items-center align-end justify-evenly md:items-start border-solid border-2 border-slate-400 shadow-sm p-5 rounded-lg m5">
             <div className="text-slate-800 text-4xl md:text-5xl lg:text-7xl font-extrabold mb-5">
               {venue.name}
               <CalcRatings rating={venue.rating} />

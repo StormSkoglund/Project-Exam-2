@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Checkout from "../pages/Checkout";
 import Contact from "../pages/Contact";
-import CreateVenue from "../pages/CreateVenue";
 import Error from "../pages/ErrorRedirect";
 import Home from "../pages/Home";
 import VenuePage from "../pages/VenuePage";
@@ -10,6 +9,7 @@ import ProfileManager from "../pages/ProfileManager";
 import Booking from "../pages/Booking";
 import Venues from "../pages/Venues";
 import Layout from "../components/ui/Layout";
+import AdminPortal from "../pages/AdminPortal";
 
 const router = createBrowserRouter([
   {
@@ -38,8 +38,8 @@ const router = createBrowserRouter([
         element: <Checkout />,
       },
       {
-        path: "createvenue",
-        element: <CreateVenue />,
+        path: "adminportal",
+        element: <AdminPortal />,
       },
       {
         path: "venues",

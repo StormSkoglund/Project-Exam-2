@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import SkeletonSingleVenue from "./ui/loaders/SkeletonSingleVenue";
 import useApiQuery from "../hooks/useApiQuery";
-import { CalcRatings } from "./ui/calculators/CalcRatings";
+import { CalcRatings } from "./calculators/CalcRatings";
 
 function DisplaySingleVenue() {
   const { id } = useParams<{ id: string }>();

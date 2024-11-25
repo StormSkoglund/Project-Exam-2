@@ -1,13 +1,21 @@
 import React from "react";
 import RenderVenuesHome from "../components/ui/RenderVenuesHome";
+import { Helmet } from "react-helmet-async";
 
 const Home: React.FC = () => {
   return (
     <>
+      <Helmet>
+        <title>Holistay | Home</title>
+        <meta
+          name="description"
+          content="Find the ideal accommodation for your holiday with Holistay. Explore a wide range of places to stay with various amenities."
+        />
+      </Helmet>
       <img
         src="assets/hero-image-holistay-min.png"
         alt="A beach view from a beachside-bungalow porch"
-        className="w-full m-auto blur-xs relative"
+        className="w-full m-auto blur-xs relative rounded-3xl drop-shadow-2xl"
       />
       <h1 className="absolute top-20 sm:top-40 left-1/2 transform -translate-x-1/2 text-sm sm:text-2xl md:text-3xl lg:text-4xl 2xl:text-6xl font-bold text-white mx-auto">
         Discover Your Perfect Stay

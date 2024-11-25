@@ -5,6 +5,7 @@ export interface Dataset extends Record<string, unknown> {
   name: string;
   media: { url: string; alt: string }[];
 }
+
 interface ApiState {
   data: Dataset[];
   isLoading: boolean;
@@ -15,6 +16,7 @@ interface ApiState {
   setIsError: (isError: boolean) => void;
   setErrorMessage: (message: string | null) => void;
 }
+
 export const useApiStore = create<ApiState>((set) => ({
   data: [],
   isLoading: false,
@@ -39,18 +41,17 @@ export interface User {
   name: string;
   email: string;
   password: string;
-  avatar: {
-    url: string;
-    alt: string;
-  };
+  bio?: string;
+  avatar?: { url?: string; alt?: string } | null;
+  banner?: { url?: string; alt?: string } | null;
   venueManager: boolean;
 }
 
 interface UserState {
-  user: User | null;
+  user: Partial<Omit<User, "password">> | null;
   isLoggedIn: boolean;
   accessToken: string | null;
-  setUser: (user: User) => void;
+  setUser: (user: Partial<Omit<User, "password">>) => void;
   setIsLoggedIn: (isLoggedIn: boolean) => void;
   setAccessToken: (token: string) => void;
 }
