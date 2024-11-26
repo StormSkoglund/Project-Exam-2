@@ -1,15 +1,13 @@
-/*import DateSelection from "../components/ui/forms/booking/DateSelection";
-import useApiQuery from "../hooks/useApiQuery";
-
-function calculateTotal(venueId) {
-  const { data: venue } = useApiQuery(venueId);
-  const selectedDates = DateSelection();
-  if (venue && selectedDates.length > 0) {
-    const price = venue.price;
-    const numberOfDays = selectedDates.length;
-    return price * numberOfDays;
-  }
-  return 0;
+function totalVenuePrice(
+  dateFrom: string,
+  dateTo: string,
+  price: number
+): number {
+  const bookingStart = new Date(dateFrom);
+  const bookingEnd = new Date(dateTo);
+  const timeDifference = bookingEnd.getTime() - bookingStart.getTime();
+  const daysDifference = timeDifference / (1000 * 3600 * 24);
+  return daysDifference * parseFloat(price.toFixed(2));
 }
 
-export default calculateTotal;*/
+export default totalVenuePrice;

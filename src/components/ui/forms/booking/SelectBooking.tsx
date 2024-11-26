@@ -10,6 +10,7 @@ import {
   bookings,
 } from "../../../../utils/baseUrlAndEndpoints";
 import useMyStore from "../../../../store";
+import totalVenuePrice from "../../../../utils/calculateTotal";
 
 type DateValue = Date | [Date, Date] | null;
 
@@ -234,7 +235,7 @@ function SelectBooking() {
       <div className="mt-4">
         <label
           htmlFor="guests"
-          className="text-sm font-medium text-slate-800 block w-2/6 mx-auto"
+          className="text-lg font-medium text-slate-900 block text-center p-3 font-montserrat"
         >
           Number of Guests
         </label>
@@ -262,6 +263,16 @@ function SelectBooking() {
             </span>
             {date[1].toDateString()}
           </div>
+          {venue && (
+            <div className="text-lg font-bold text-slate-900 block text-center p-5 font-montserrat">
+              Total Price:
+              {totalVenuePrice(
+                date[0].toISOString(),
+                date[1].toISOString(),
+                venue.price
+              ).toFixed(2)}
+            </div>
+          )}
         </div>
       ) : date ? (
         <p className="text-center mt-4">
