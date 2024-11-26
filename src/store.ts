@@ -54,6 +54,7 @@ interface UserState {
   setUser: (user: Partial<Omit<User, "password">>) => void;
   setIsLoggedIn: (isLoggedIn: boolean) => void;
   setAccessToken: (token: string) => void;
+  logout: () => void;
 }
 
 interface StoreState extends ModalState, UserState {}
@@ -66,12 +67,25 @@ const useMyStore = create<StoreState>((set) => ({
   handleOpenRegister: () => set({ openRegisterModal: true }),
   handleCloseRegister: () => set({ openRegisterModal: false }),
 
-  user: null,
-  isLoggedIn: false,
+  user: JSON.parse(localStorage.getItem("user") || "null"),
+  isLoggedIn: JSON.parse(localStorage.getItem("isLoggedIn") || "false"),
   accessToken: null,
-  setUser: (user) => set({ user }),
-  setIsLoggedIn: (isLoggedIn) => set({ isLoggedIn }),
-  setAccessToken: (token) => set({ accessToken: token }),
+  setUser: (user) => {
+    localStorage.setItem("user", JSON.stringify(user));
+    set({ user });
+  },
+  setIsLoggedIn: (isLoggedIn) => {
+    localStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
+    set({ isLoggedIn });
+  },
+  setAccessToken: (token) => {
+    set({ accessToken: token });
+  },
+  logout: () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("isLoggedIn");
+    set({ user: null, isLoggedIn: false, accessToken: null });
+  },
 }));
 
 export default useMyStore;

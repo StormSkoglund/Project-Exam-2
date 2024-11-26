@@ -6,11 +6,13 @@ import useMyStore from "../../../store";
 import LoginModal from "../forms/modals/LoginModal";
 import RegisterModal from "../forms/modals/RegisterModal";
 import { FaTimes } from "react-icons/fa";
+import { RxAvatar } from "react-icons/rx";
 
 /*Header active links styling Stack Overflow. (2023). Styling NavLink using Tailwind CSS. [online] Available at: <https://stackoverflow.com/questions/66796367/styling-navlink-using-tailwind-css#72723231> [Accessed 24 Nov. 2024].*/
 function Header(): React.ReactElement {
-  const { handleOpenRegister } = useMyStore();
-  const { handleOpenLogin } = useMyStore();
+  const { handleOpenRegister, handleOpenLogin, isLoggedIn, logout } =
+    useMyStore();
+
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -117,18 +119,32 @@ function Header(): React.ReactElement {
         </NavLink>
       </div>
       <div className="flex items-center">
-        <button
-          onClick={handleOpenLogin}
-          className="text-white px-2 py-1 sm:px-4 sm:py-2 text-xs sm:text-lg rounded-md font-medium mr-1 sm:mr-4 hover:shadow-lg"
-        >
-          Login
-        </button>
-        <button
-          onClick={handleOpenRegister}
-          className="bg-white text-slate-900 px-2 py-1 sm:px-6 sm:py-3 rounded-md text-xs sm:text-lg font-medium hover:shadow-2xl"
-        >
-          Sign up
-        </button>
+        {isLoggedIn ? (
+          <>
+            <RxAvatar className="text-2xl font-bold text-white mr-3" />
+            <button
+              onClick={logout}
+              className="text-white px-2 py-1 sm:px-4 sm:py-2 text-xs sm:text-lg rounded-md font-medium hover:shadow-lg"
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <button
+              onClick={handleOpenLogin}
+              className="text-white px-2 py-1 sm:px-4 sm:py-2 text-xs sm:text-lg rounded-md font-medium mr-1 sm:mr-4 hover:shadow-lg"
+            >
+              Login
+            </button>
+            <button
+              onClick={handleOpenRegister}
+              className="bg-white text-slate-900 px-2 py-1 sm:px-6 sm:py-3 rounded-md text-xs sm:text-lg font-medium hover:shadow-2xl"
+            >
+              Sign up
+            </button>
+          </>
+        )}
       </div>
       <LoginModal /> <RegisterModal />
     </nav>
