@@ -11,7 +11,7 @@ function Venues(): React.ReactElement {
           content="Here you will find all available venuesS"
         />
       </Helmet>
-      <h1 className="mt-40 text-5xl text-center">
+      <h1 className="mt-40 text-5xl font-normal text-slate-800 mb-10 text-center">
         Find A Place To Stay Today!
       </h1>
       <RenderVenues />

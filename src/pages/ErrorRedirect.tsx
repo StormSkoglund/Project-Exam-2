@@ -11,7 +11,7 @@ function ErrorRedirect(): React.ReactElement {
           content="An error has been encountered. Please contact support if the issue persists."
         />
       </Helmet>
-      <h1>An error has occoured</h1>
+      <h1 className="text-center">An error has occoured</h1>
       <div className="text-center text-white bg-red-500 p-10 rounded-xl mx-auto">
         Return
         <Link to="/">

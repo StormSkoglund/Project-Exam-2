@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import SkeletonSingleVenue from "./ui/loaders/SkeletonSingleVenue";
 import useApiQuery from "../hooks/useApiQuery";
 import { CalcRatings } from "./calculators/CalcRatings";
+import { FaGlobe } from "react-icons/fa";
 
 function DisplaySingleVenue() {
   const { id } = useParams<{ id: string }>();
@@ -28,11 +29,10 @@ function DisplaySingleVenue() {
                 alt={data.media[0].alt}
               />
             ) : (
-              <img
-                className="w-full h-auto object-cover rounded-md shadow-lg"
-                src="/assets/hero-image-holistay-min.png"
-                alt="A beach view from a bungalow's porch"
-              />
+              <div className="flex flex-row align-middle items-center justify-center">
+                <FaGlobe className="text-2xl text-theme-blue mx-5" />
+                <p>Sorry, no image available!</p>
+              </div>
             )}
           </div>
           <div className="flex flex-col w-10/12 lg:w-5/12 items-center align-end justify-evenly md:items-start border-solid border-2 border-slate-400 shadow-sm p-5 rounded-lg m-5">
@@ -53,6 +53,18 @@ function DisplaySingleVenue() {
               <div className="text-slate-800 text-base md:text-lg lg:text-2xl font-bold mb-2 pe-10">
                 {data.name}
               </div>
+              <div className="text-slate-800 text-base md:text-lg lg:text-2xl font-bold mb-2 pe-10">
+                {data.meta.parking}
+              </div>
+              <div className="text-slate-800 text-base md:text-lg lg:text-2xl font-bold mb-2 pe-10">
+                {data.meta.wifi}
+              </div>
+              <div className="text-slate-800 text-base md:text-lg lg:text-2xl font-bold mb-2 pe-10">
+                {data.meta.pets}
+              </div>
+              <div className="text-slate-800 text-base md:text-lg lg:text-2xl font-bold mb-2 pe-10">
+                {data.meta.breakfast}
+              </div>
               <div className="flex flex-col items-center md:items-start">
                 <div className="text-slate-800 text-base md:text-lg lg:text-2xl font-bold">
                   ${data.price}
@@ -70,7 +82,7 @@ function DisplaySingleVenue() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-8/12 mx-auto mt-5 mb-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-10/12 mx-auto mt-5 mb-5">
           {data.media.slice(1, 4).map((mediaItem, index) => (
             <img
               key={index}

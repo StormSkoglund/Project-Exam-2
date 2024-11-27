@@ -49,9 +49,17 @@ p {
 
 /*Header active links styling Stack Overflow. (2023). Styling NavLink using Tailwind CSS. [online] Available at: <https://stackoverflow.com/questions/66796367/styling-navlink-using-tailwind-css#72723231> [Accessed 24 Nov. 2024].*/
 .active-link {
-  @apply text-white font-bold border-solid border-b-4 shadow-2xl;
+  @apply text-white border-solid border-b-4 shadow-2xl;
+}
+
+div {
+  @apply font-montserrat;
 }
 
 label {
   @apply text-slate-800;
+}
+
+button {
+  @apply hover:shadow-2xl hover:opacity-90 duration-150;
 }

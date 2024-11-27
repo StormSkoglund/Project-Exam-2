@@ -121,7 +121,12 @@ function Header(): React.ReactElement {
       <div className="flex items-center">
         {isLoggedIn ? (
           <>
-            <RxAvatar className="text-2xl font-bold text-white mr-3" />
+            <NavLink
+              to="/profilemanager"
+              className={({ isActive }) => (isActive ? "active-link" : " ")}
+            >
+              <RxAvatar className="text-4xl font-bold text-white hover:text-theme-green duration-300 hover:font-extrabold" />
+            </NavLink>
             <button
               onClick={logout}
               className="text-white px-2 py-1 sm:px-4 sm:py-2 text-xs sm:text-lg rounded-md font-medium hover:shadow-lg"

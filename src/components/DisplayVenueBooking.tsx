@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import SkeletonSingleVenue from "./ui/loaders/SkeletonSingleVenue";
 import useVenueWithBookings from "../hooks/useVenueWithBookings";
 import { CalcRatings } from "./calculators/CalcRatings";
+import { FaGlobe } from "react-icons/fa";
 
 function DisplayVenueBooking() {
   const { venueId } = useParams<{ venueId: string }>();
@@ -36,11 +37,10 @@ function DisplayVenueBooking() {
                 alt={venue.media[0].alt}
               />
             ) : (
-              <img
-                className="w-full h-auto object-cover rounded-md shadow-lg"
-                src="/assets/hero-image-holistay-min.png"
-                alt="A beach view from a bungalow's porch"
-              />
+              <div className="flex flex-col align-middle space-y-10 items-center justify-center mt-10">
+                <FaGlobe className="text-2xl text-theme-blue mx-5 hover:drop-shadow-2xl" />
+                <p>Sorry, no photos available!</p>
+              </div>
             )}
           </div>
           <div className="flex flex-col w-10/12 lg:w-5/12 items-center align-end justify-evenly md:items-start border-solid border-2 border-slate-400 shadow-sm p-5 rounded-lg m5">
