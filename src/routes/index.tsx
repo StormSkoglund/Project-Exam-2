@@ -4,7 +4,6 @@ import Contact from "../pages/Contact";
 import Error from "../pages/ErrorRedirect";
 import Home from "../pages/Home";
 import VenuePage from "../pages/VenuePage";
-import ProfileCustomer from "../pages/ProfileCustomer";
 import ProfileManager from "../pages/ProfileManager";
 import Booking from "../pages/Booking";
 import Venues from "../pages/Venues";
@@ -45,10 +44,7 @@ const router = createBrowserRouter([
         path: "venues",
         element: <Venues />,
       },
-      {
-        path: "profilecustomer",
-        element: <ProfileCustomer />,
-      },
+
       {
         path: "profilemanager",
         element: <ProfileManager />,

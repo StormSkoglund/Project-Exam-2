@@ -125,7 +125,7 @@ function Header(): React.ReactElement {
               to="/profilemanager"
               className={({ isActive }) => (isActive ? "active-link" : " ")}
             >
-              <RxAvatar className="text-4xl font-bold text-white hover:text-theme-green duration-300 hover:font-extrabold" />
+              <RxAvatar className="text-2xl md:text-4xl font-bold text-white hover:text-theme-green duration-300 hover:font-extrabold" />
             </NavLink>
             <button
               onClick={logout}

@@ -69,6 +69,7 @@ function RenderVenues() {
               ) : (
                 <>
                   <div className="flex flex-col align-middle space-y-10 items-center justify-center mt-10">
+                    <div className="mb5">{venue.name}</div>
                     <FaGlobe className="text-2xl text-theme-blue mx-5 hover:drop-shadow-2xl" />
                     <p>Sorry, no image available!</p>
 
