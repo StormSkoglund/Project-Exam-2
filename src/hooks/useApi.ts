@@ -30,7 +30,7 @@ function useApi(url: string, options?: UseApiOptions) {
         const headers = {
           ...options?.headers,
           Authorization: `Bearer ${accessToken}`,
-          "x-api-key": apiKey,
+          "X-Noroff-API-Key": apiKey,
         };
 
         const response = await fetch(url, {

@@ -5,6 +5,7 @@ export interface Dataset extends Record<string, unknown> {
   name: string;
   media: { url: string; alt: string }[];
 }
+
 interface ApiState {
   data: Dataset[];
   isLoading: boolean;
@@ -15,6 +16,7 @@ interface ApiState {
   setIsError: (isError: boolean) => void;
   setErrorMessage: (message: string | null) => void;
 }
+
 export const useApiStore = create<ApiState>((set) => ({
   data: [],
   isLoading: false,
@@ -39,20 +41,20 @@ export interface User {
   name: string;
   email: string;
   password: string;
-  avatar: {
-    url: string;
-    alt: string;
-  };
+  bio?: string;
+  avatar?: { url?: string; alt?: string } | null;
+  banner?: { url?: string; alt?: string } | null;
   venueManager: boolean;
 }
 
 interface UserState {
-  user: User | null;
+  user: Partial<Omit<User, "password">> | null;
   isLoggedIn: boolean;
   accessToken: string | null;
-  setUser: (user: User) => void;
+  setUser: (user: Partial<Omit<User, "password">>) => void;
   setIsLoggedIn: (isLoggedIn: boolean) => void;
   setAccessToken: (token: string) => void;
+  logout: () => void;
 }
 
 interface StoreState extends ModalState, UserState {}
@@ -65,12 +67,29 @@ const useMyStore = create<StoreState>((set) => ({
   handleOpenRegister: () => set({ openRegisterModal: true }),
   handleCloseRegister: () => set({ openRegisterModal: false }),
 
-  user: null,
-  isLoggedIn: false,
-  accessToken: null,
-  setUser: (user) => set({ user }),
-  setIsLoggedIn: (isLoggedIn) => set({ isLoggedIn }),
-  setAccessToken: (token) => set({ accessToken: token }),
+  user: JSON.parse(localStorage.getItem("user") || "null"),
+  isLoggedIn: JSON.parse(localStorage.getItem("isLoggedIn") || "false"),
+  accessToken: localStorage.getItem("accessToken") || null,
+  setUser: (user) => {
+    localStorage.setItem("user", JSON.stringify(user));
+    set({ user });
+  },
+  setIsLoggedIn: (isLoggedIn) => {
+    localStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
+    set({ isLoggedIn });
+  },
+  setAccessToken: (token) => {
+    console.log("Setting accessToken to localStorage:", token);
+    localStorage.setItem("accessToken", token);
+    set({ accessToken: token });
+  },
+  logout: () => {
+    console.log("Logging out and removing items from localStorage");
+    localStorage.removeItem("user");
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("accessToken");
+    set({ user: null, isLoggedIn: false, accessToken: null });
+  },
 }));
 
 export default useMyStore;

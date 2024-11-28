@@ -1,6 +1,5 @@
 import useMyStore from "../../store";
-import { apiUrl } from "../../utils/baseUrlAndEndpoints";
-import { loginEndpoint } from "../../utils/baseUrlAndEndpoints";
+import { apiUrl, loginEndpoint } from "../../utils/baseUrlAndEndpoints";
 
 interface LoginUser {
   email: string;
@@ -19,12 +18,26 @@ export async function postUserLogin(
   });
 
   const json = await response.json();
+  console.log("Response JSON:", json);
+
   if (!response.ok) {
     throw new Error(json.errors?.[0]?.message || "Login failed");
   }
 
   console.log("Received Access Token:", json.data.accessToken);
   useMyStore.getState().setAccessToken(json.data.accessToken);
+  useMyStore.getState().setIsLoggedIn(true);
 
-  return json.data;
+  const userData = {
+    name: json.data.name,
+    email: json.data.email,
+    bio: json.data.bio,
+    avatar: json.data.avatar,
+    banner: json.data.banner,
+    venueManager: json.data.venueManager,
+  };
+
+  useMyStore.getState().setUser(userData);
+
+  return { accessToken: json.data.accessToken };
 }

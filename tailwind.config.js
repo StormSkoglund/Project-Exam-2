@@ -3,6 +3,10 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        myanmar: ["Myanmar Khyay", "Arial", "sans-serif"],
+        montserrat: ["Montserrat", "Helvetica", "Arial", "sans-serif"],
+      },
       colors: {
         "theme-blue": "#1E6F98",
         "theme-green": "#48924A",

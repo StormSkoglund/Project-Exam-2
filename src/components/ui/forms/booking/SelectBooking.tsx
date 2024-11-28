@@ -10,6 +10,7 @@ import {
   bookings,
 } from "../../../../utils/baseUrlAndEndpoints";
 import useMyStore from "../../../../store";
+import totalVenuePrice from "../../../../utils/calculateTotal";
 
 type DateValue = Date | [Date, Date] | null;
 
@@ -211,21 +212,16 @@ function SelectBooking() {
       <h2 className="text-center text-2xl font-bold mb-4">
         Book Accommodation
       </h2>
-      <div className="mt-5 p-2 font-medium text-slate-800">
-        -Dates highlighted in red are unavailable for booking.
-      </div>
-      <div className="mb-2 p-2 font-medium text-slate-800">
-        -Today's date is highlighted with a green dashed border.
-      </div>
-      <div className="mb-2 p-2 font-medium text-slate-800">
-        -Click to select a start date, then an end date to book multiple days.
-        Today's date is unavailable for booking.
-      </div>
-
-      <div className="mb-2 p-2 font-medium text-slate-800">
-        -A minimum of one night is required.
-      </div>
-      <div className="">
+      <ul className="mt-5 p-2 font-medium text-slate-800 list-disc">
+        <li>Dates highlighted in red are unavailable for booking.</li>
+        <li>Today's date is highlighted with a green dashed border.</li>
+        <li>
+          Click to select a start date, then an end date to book multiple days.
+          Today's date is unavailable for booking.
+        </li>
+        <li>A minimum of one night is required.</li>
+      </ul>
+      <div>
         <Calendar
           onChange={handleDateChange}
           value={date}
@@ -239,7 +235,7 @@ function SelectBooking() {
       <div className="mt-4">
         <label
           htmlFor="guests"
-          className="text-sm font-medium text-slate-800 block w-2/6 mx-auto"
+          className="text-lg font-medium text-slate-900 block text-center p-3 font-montserrat"
         >
           Number of Guests
         </label>
@@ -267,6 +263,16 @@ function SelectBooking() {
             </span>
             {date[1].toDateString()}
           </div>
+          {venue && (
+            <div className="text-lg font-bold text-slate-900 block text-center p-5 font-montserrat">
+              Total Price:
+              {totalVenuePrice(
+                date[0].toISOString(),
+                date[1].toISOString(),
+                venue.price
+              ).toFixed(2)}
+            </div>
+          )}
         </div>
       ) : date ? (
         <p className="text-center mt-4">
