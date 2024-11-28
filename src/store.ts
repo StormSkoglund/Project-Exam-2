@@ -69,7 +69,7 @@ const useMyStore = create<StoreState>((set) => ({
 
   user: JSON.parse(localStorage.getItem("user") || "null"),
   isLoggedIn: JSON.parse(localStorage.getItem("isLoggedIn") || "false"),
-  accessToken: null,
+  accessToken: localStorage.getItem("accessToken") || null,
   setUser: (user) => {
     localStorage.setItem("user", JSON.stringify(user));
     set({ user });
@@ -79,11 +79,15 @@ const useMyStore = create<StoreState>((set) => ({
     set({ isLoggedIn });
   },
   setAccessToken: (token) => {
+    console.log("Setting accessToken to localStorage:", token);
+    localStorage.setItem("accessToken", token);
     set({ accessToken: token });
   },
   logout: () => {
+    console.log("Logging out and removing items from localStorage");
     localStorage.removeItem("user");
     localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("accessToken");
     set({ user: null, isLoggedIn: false, accessToken: null });
   },
 }));

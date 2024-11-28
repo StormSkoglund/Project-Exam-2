@@ -24,13 +24,18 @@ export interface Venue {
   _count: { bookings: number };
 }
 
-const fetchAllVenues = async (): Promise<Venue[]> => {
+const fetchAllVenuesSearch = async (query: string): Promise<Venue[]> => {
+  if (!query) {
+    return [];
+  }
   let allVenues: Venue[] = [];
   let currentPage = 1;
   let totalPages = 1;
 
   while (currentPage && currentPage <= totalPages) {
-    const response = await fetch(`${apiUrl}${venues}?page=${currentPage}`);
+    const response = await fetch(
+      `${apiUrl}${venues}/search?q=${query}&page=${currentPage}`
+    );
 
     if (!response.ok) {
       throw new Error("Failed to fetch venues");
@@ -45,12 +50,12 @@ const fetchAllVenues = async (): Promise<Venue[]> => {
   return allVenues;
 };
 
-function useFetchedVenues() {
+function useFetchedVenuesSearch(query: string = "") {
   return useQuery<Venue[]>({
-    queryKey: ["venues"],
-    queryFn: fetchAllVenues,
+    queryKey: ["venues", query],
+    queryFn: () => fetchAllVenuesSearch(query),
     staleTime: Infinity,
   });
 }
 
-export default useFetchedVenues;
+export default useFetchedVenuesSearch;

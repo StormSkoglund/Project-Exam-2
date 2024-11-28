@@ -1,7 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import useProfileQuery from "../../hooks/useProfilesQuery";
+import useMyStore from "../../store";
+import CreateVenue from "./CreateVenue";
 
 function UserProfile() {
   const { data: profile, isLoading, isError, error } = useProfileQuery();
+  const { isLoggedIn } = useMyStore();
+  const navigate = useNavigate();
+
+  if (!isLoggedIn) {
+    navigate("/");
+  }
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -38,6 +47,7 @@ function UserProfile() {
           {profile?.bio && (
             <div className="border-2 border-solid">{profile.bio}</div>
           )}
+          <CreateVenue />
         </div>
       ) : (
         <div>
