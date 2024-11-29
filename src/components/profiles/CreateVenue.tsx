@@ -1,7 +1,10 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { createVenueSchema, CreateVenueType } from "./createvenueSchema";
-import { postCreateVenue } from "./postCreateVenue";
+import {
+  createVenueSchema,
+  CreateVenueType,
+} from "../ui/forms/profile/createvenueSchema";
+import { postCreateVenue } from "../ui/forms/profile/postCreateVenue";
 import { useId } from "react";
 
 function CreateVenue() {
@@ -69,6 +72,7 @@ function CreateVenue() {
             </label>
             <input
               type="text"
+              autoComplete="on"
               id={nameId}
               {...register("name")}
               className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -86,6 +90,7 @@ function CreateVenue() {
             </label>
             <textarea
               id={descriptionId}
+              autoComplete="on"
               {...register("description")}
               className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
@@ -104,6 +109,7 @@ function CreateVenue() {
             </label>
             <input
               type="url"
+              autoComplete="on"
               id={mediaUrlId}
               {...register("media.0.url")}
               className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -123,6 +129,7 @@ function CreateVenue() {
             </label>
             <input
               type="text"
+              autoComplete="on"
               id={mediaAltId}
               {...register("media.0.alt")}
               className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -142,6 +149,7 @@ function CreateVenue() {
             </label>
             <input
               type="number"
+              autoComplete="on"
               id={priceId}
               {...register("price")}
               className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -161,6 +169,7 @@ function CreateVenue() {
             </label>
             <input
               type="number"
+              autoComplete="on"
               id={maxGuestsId}
               {...register("maxGuests")}
               className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -180,6 +189,7 @@ function CreateVenue() {
             </label>
             <input
               type="number"
+              autoComplete="on"
               id={ratingId}
               {...register("rating")}
               className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -194,6 +204,7 @@ function CreateVenue() {
           <div className="flex items-center">
             <input
               type="checkbox"
+              autoComplete="on"
               id={wifiId}
               {...register("meta.wifi")}
               className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
@@ -208,6 +219,7 @@ function CreateVenue() {
           <div className="flex items-center">
             <input
               type="checkbox"
+              autoComplete="on"
               id={parkingId}
               {...register("meta.parking")}
               className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
@@ -222,6 +234,7 @@ function CreateVenue() {
           <div className="flex items-center">
             <input
               type="checkbox"
+              autoComplete="on"
               id={breakfastId}
               {...register("meta.breakfast")}
               className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
@@ -236,6 +249,7 @@ function CreateVenue() {
           <div className="flex items-center">
             <input
               type="checkbox"
+              autoComplete="on"
               id={petsId}
               {...register("meta.pets")}
               className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
@@ -256,6 +270,7 @@ function CreateVenue() {
             </label>
             <input
               type="text"
+              autoComplete="on"
               id={addressId}
               {...register("location.address")}
               className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -275,6 +290,7 @@ function CreateVenue() {
             </label>
             <input
               type="text"
+              autoComplete="on"
               id={cityId}
               {...register("location.city")}
               className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -294,6 +310,7 @@ function CreateVenue() {
             </label>
             <input
               type="text"
+              autoComplete="on"
               id={zipId}
               {...register("location.zip")}
               className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -313,6 +330,7 @@ function CreateVenue() {
             </label>
             <input
               type="text"
+              autoComplete="on"
               id={countryId}
               {...register("location.country")}
               className="w-full px-3 py-2 mt-1 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"

@@ -1,5 +1,5 @@
-import { apiKey, apiUrl, venues } from "../../utils/baseUrlAndEndpoints";
-import useMyStore from "../../store";
+import { apiKey, apiUrl, venues } from "../../../../utils/baseUrlAndEndpoints";
+import useMyStore from "../../../../store";
 import { CreateVenueType } from "./createvenueSchema";
 
 export async function postCreateVenue(createvenue: CreateVenueType) {

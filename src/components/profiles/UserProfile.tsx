@@ -1,16 +1,21 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useProfileQuery from "../../hooks/useProfilesQuery";
 import useMyStore from "../../store";
 import CreateVenue from "./CreateVenue";
+import UpdateAvatar from "./UpdateAvatar";
+import RenderProfileBooking from "./renderProfileBooking";
 
 function UserProfile() {
   const { data: profile, isLoading, isError, error } = useProfileQuery();
   const { isLoggedIn } = useMyStore();
   const navigate = useNavigate();
 
-  if (!isLoggedIn) {
-    navigate("/");
-  }
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/");
+    }
+  }, [isLoggedIn, navigate]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -44,6 +49,7 @@ function UserProfile() {
           <p className="block text-theme-blue mb-2 p-3 border-b-2 border-solid text-center">
             Email: {profile.email}
           </p>
+          <UpdateAvatar />
           {profile?.bio && (
             <div className="border-2 border-solid">{profile.bio}</div>
           )}
@@ -67,9 +73,11 @@ function UserProfile() {
           <p className="block text-theme-blue mb-2 p-3 border-b-2 border-solid text-center">
             Email: {profile.email}
           </p>
+          <UpdateAvatar />
           {profile?.bio && (
             <div className="border-2 border-solid">{profile.bio}</div>
           )}
+          <RenderProfileBooking />
         </div>
       )}
     </div>

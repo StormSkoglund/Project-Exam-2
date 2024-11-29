@@ -57,7 +57,7 @@ div {
 }
 
 label {
-  @apply text-slate-800;
+  @apply text-slate-800 start-11 bg-white;
 }
 
 button {
