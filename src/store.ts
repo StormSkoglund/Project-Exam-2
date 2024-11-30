@@ -6,6 +6,18 @@ export interface Dataset extends Record<string, unknown> {
   media: { url: string; alt: string }[];
 }
 
+interface StoreState {
+  openUpdateVenueModal: boolean;
+  handleOpenUpdateVenue: () => void;
+  handleCloseUpdateVenue: () => void;
+  openCreateVenueModal: boolean;
+  handleOpenCreateVenue: () => void;
+  handleCloseCreateVenue: () => void;
+  openUpdateAvatarModal: boolean;
+  handleOpenUpdateAvatar: () => void;
+  handleCloseUpdateAvatar: () => void;
+}
+
 interface ApiState {
   data: Dataset[];
   isLoading: boolean;
@@ -60,6 +72,15 @@ interface UserState {
 interface StoreState extends ModalState, UserState {}
 
 const useMyStore = create<StoreState>((set) => ({
+  openUpdateVenueModal: false,
+  handleOpenUpdateVenue: () => set({ openUpdateVenueModal: true }),
+  handleCloseUpdateVenue: () => set({ openUpdateVenueModal: false }),
+  openUpdateAvatarModal: false,
+  handleOpenUpdateAvatar: () => set({ openUpdateAvatarModal: true }),
+  handleCloseUpdateAvatar: () => set({ openUpdateAvatarModal: false }),
+  openCreateVenueModal: false,
+  handleOpenCreateVenue: () => set({ openCreateVenueModal: true }),
+  handleCloseCreateVenue: () => set({ openCreateVenueModal: false }),
   openLoginModal: false,
   openRegisterModal: false,
   handleOpenLogin: () => set({ openLoginModal: true }),

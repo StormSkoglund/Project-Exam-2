@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from "react";
 import getBookingsByProfile from "../../features/auth/getBookingsByProfile";
 import moment from "moment";
-
-interface Booking {
-  id: string;
-  dateFrom: string;
-  dateTo: string;
-  guests: number;
-  created: string;
-  updated: string;
-}
+import { Booking } from "../../utils/interfaces";
 
 const RenderProfileBooking: React.FC = () => {
   const [bookings, setBookings] = useState<Booking[]>([]);

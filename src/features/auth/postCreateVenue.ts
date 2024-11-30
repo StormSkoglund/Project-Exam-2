@@ -1,6 +1,6 @@
-import { apiKey, apiUrl, venues } from "../../../../utils/baseUrlAndEndpoints";
-import useMyStore from "../../../../store";
-import { CreateVenueType } from "./createvenueSchema";
+import { apiKey, apiUrl, venues } from "../../utils/baseUrlAndEndpoints";
+import useMyStore from "../../store";
+import { CreateVenueType } from "../../components/ui/forms/profile/createvenueSchema";
 
 export async function postCreateVenue(createvenue: CreateVenueType) {
   const { accessToken } = useMyStore.getState();
