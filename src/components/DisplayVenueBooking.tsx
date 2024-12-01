@@ -36,7 +36,7 @@ function DisplayVenueBooking() {
           <div className="relative w-10/12 md:w-8/12 lg:w-7/12 p-5">
             {venue.media.length > 0 ? (
               <img
-                className=" h-auto object-cover rounded-md shadow-lg mx-auto"
+                className="w-2/3 h-auto object-cover rounded-md shadow-lg mx-auto"
                 src={venue.media[0].url}
                 alt={venue.media[0].alt}
               />
@@ -48,11 +48,11 @@ function DisplayVenueBooking() {
             )}
           </div>
           <div className="flex flex-col w-10/12 lg:w-5/12 items-center align-end justify-evenly md:items-center border-solid border-2 border-slate-400 shadow-sm p-5 rounded-lg m5">
-            <div className="text-slate-800 text-4xl md:text-2xl lg:text-4xl font-extrabold mb-5">
+            <div className="text-slate-800 text-4xl md:text-lg lg:text-4xl font-extrabold mb-5">
               {shortName}
               <CalcRatings rating={venue.rating} />
             </div>
-            <p className="text-slate-800 w-10/12 text-base md:text-lg lg:text-lg font-base mb-5">
+            <p className="text-slate-800 text-base md:text-lg lg:text-lg font-base mb-5">
               {shortDescription}
             </p>
             <div className="text-slate-900 text-base md:text-lg font-semibold mb-2">
