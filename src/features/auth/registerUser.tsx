@@ -1,5 +1,3 @@
-//Stack Overflow. (2023). How to generate unique IDs for form labels in React. [online] Available at: https://stackoverflow.com/questions/29420835/how-to-generate-unique-ids-for-form-labels-in-react/71681435[Accessed 22 Nov. 2024].
-
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useStore from "../../store";
@@ -7,6 +5,7 @@ import { registerSchema } from "./validationAuth";
 import { User } from "../../store";
 import { postUserRegister } from "./postUserRegister";
 import { useId, useState } from "react";
+
 interface RegisterFormData {
   name: string;
   email: string;
@@ -17,6 +16,7 @@ interface RegisterFormData {
   banner?: { url?: string; alt?: string } | null;
   venueManager: boolean;
 }
+
 function RegisterUser() {
   const nameId = useId();
   const emailId = useId();
@@ -24,6 +24,7 @@ function RegisterUser() {
   const confirmPasswordId = useId();
   const venueManagerId = useId();
   const [isVenueManager, setIsVenueManager] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -31,26 +32,32 @@ function RegisterUser() {
     formState: { errors },
   } = useForm<RegisterFormData>({ resolver: yupResolver(registerSchema) });
   const setUser = useStore((state) => state.setUser);
-  const setIsLoggedIn = useStore((state) => state.setIsLoggedIn);
+  const handleOpenLogin = useStore((state) => state.handleOpenLogin);
   const handleCloseRegister = useStore((state) => state.handleCloseRegister);
+
   const onSubmit = async (data: RegisterFormData) => {
     try {
       const updatedData: User = { ...data, venueManager: isVenueManager };
       await postUserRegister(updatedData);
       setUser(updatedData);
-      setIsLoggedIn(true);
-      console.log(updatedData);
       reset();
       handleCloseRegister();
+      handleOpenLogin();
     } catch (error) {
-      console.error("Error registering user:", error);
+      if (error instanceof Error) {
+        setErrorMessage(`Error registering user: ${error.message}`);
+      } else {
+        setErrorMessage("An unknown error occurred.");
+      }
     }
   };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md p-4 space-y-6 bg-white rounded-lg shadow-md relative">
         <button
           onClick={handleCloseRegister}
+          aria-label="Toggle Close Register"
           className="absolute top-2 right-2 text-slate-800 font-bold"
         >
           X
@@ -156,13 +163,20 @@ function RegisterUser() {
           </p>
           <button
             type="submit"
-            className="w-full px-4 py-2 text-sm font-medium text-white bg-green-600 border border-transparent rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+            aria-label="Toggle Submit Registration"
+            className="w-full px-4 py-2 text-sm font-medium text-white bg-theme-green border border-transparent rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
           >
             Create Account
           </button>
         </form>
+        {errorMessage && (
+          <p className="mt-2 text-sm text-red-500 text-center">
+            {errorMessage}
+          </p>
+        )}
       </div>
     </div>
   );
 }
+
 export default RegisterUser;

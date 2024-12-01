@@ -1,11 +1,9 @@
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa6";
+import { CalcRatingsProps } from "../../utils/interfaces";
 
 // This is the star function that I used in the Frontend Frameworks exam, and modified for use in TypeScript and styling in Tailwind!
 
-interface CalcRatingsProps {
-  rating: number;
-}
 export const CalcRatings: React.FC<CalcRatingsProps> = ({ rating }) => {
   const blueStars = "text-theme-blue text-2xl";
   const fullStar = <FaStar className={blueStars} />;

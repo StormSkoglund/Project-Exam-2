@@ -1,13 +1,20 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useId, useEffect } from "react";
 import {
-  createVenueSchema,
-  CreateVenueType,
-} from "../ui/forms/profile/createvenueSchema";
-import { postCreateVenue } from "../../features/auth/postCreateVenue";
-import { useId } from "react";
+  updateVenueSchema,
+  UpdateVenueType,
+} from "../../features/auth/updateVenueSchema";
 
-function CreateVenue() {
+import { Venue } from "../../utils/interfaces";
+import UpdateVenueAuth from "../../features/auth/UpdateVenueAuth";
+
+interface UpdateVenueProps {
+  venue: Venue;
+  onClose: () => void;
+}
+
+function UpdateVenue({ venue, onClose }: UpdateVenueProps) {
   const nameId = useId();
   const descriptionId = useId();
   const mediaUrlId = useId();
@@ -23,46 +30,37 @@ function CreateVenue() {
   const cityId = useId();
   const zipId = useId();
   const countryId = useId();
+
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<CreateVenueType>({ resolver: yupResolver(createVenueSchema) });
-  const onSubmit = async (data: CreateVenueType) => {
-    const completeData: CreateVenueType = {
-      ...data,
-      rating: data.rating ?? 0,
-      meta: {
-        wifi: data.meta?.wifi ?? false,
-        parking: data.meta?.parking ?? false,
-        breakfast: data.meta?.breakfast ?? false,
-        pets: data.meta?.pets ?? false,
-      },
-      location: {
-        address: data.location?.address ?? null,
-        city: data.location?.city ?? null,
-        zip: data.location?.zip ?? null,
-        country: data.location?.country ?? null,
-        continent: data.location?.continent ?? null,
-        lat: data.location?.lat ?? 0,
-        lng: data.location?.lng ?? 0,
-      },
-    };
+  } = useForm<UpdateVenueType>({
+    resolver: yupResolver(updateVenueSchema),
+    defaultValues: venue,
+  });
+
+  const onSubmit = async (data: UpdateVenueType) => {
     try {
-      const response = await postCreateVenue(completeData);
+      const response = await UpdateVenueAuth(venue.id, data);
       console.log(response);
       reset();
+      onClose();
       window.location.reload();
     } catch (error) {
-      console.error("Error creating venue:", error);
+      console.error("Error updating venue:", error);
     }
   };
+
+  useEffect(() => {
+    reset(venue);
+  }, [venue, reset]);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md relative">
-        <h2 className="text-3xl font-bold text-center">Create Venue</h2>
+        <h2 className="text-3xl font-bold text-center">Update Venue</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div>
             <label
@@ -106,7 +104,7 @@ function CreateVenue() {
               htmlFor={mediaUrlId}
               className="block text-sm font-medium text-gray-700"
             >
-              Media URL*
+              Media URL
             </label>
             <input
               type="url"
@@ -126,7 +124,7 @@ function CreateVenue() {
               htmlFor={mediaAltId}
               className="block text-sm font-medium text-gray-700"
             >
-              Media Alt Text*
+              Media Alt Text
             </label>
             <input
               type="text"
@@ -345,10 +343,10 @@ function CreateVenue() {
           <p>* Required Fields</p>
           <button
             type="submit"
-            aria-label="Submit venue registration form"
-            className="w-full px-4 py-2 text-sm font-medium text-white bg-theme-green border border-transparent rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+            aria-label="Update venue button"
+            className="w-full px-4 py-2 text-sm font-medium text-white bg-theme-green rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
           >
-            Create Venue
+            Update Venue
           </button>
         </form>
       </div>
@@ -356,4 +354,4 @@ function CreateVenue() {
   );
 }
 
-export default CreateVenue;
+export default UpdateVenue;

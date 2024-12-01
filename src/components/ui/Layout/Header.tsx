@@ -22,6 +22,7 @@ function Header(): React.ReactElement {
       <div className="flex items-center custom:hidden">
         <button
           onClick={toggleMenu}
+          aria-label="Toggle Menu Hamburger"
           className="text-white text-2xl focus:outline-none"
         >
           {isOpen ? <FaTimes /> : <FaBars />}
@@ -32,6 +33,7 @@ function Header(): React.ReactElement {
           } absolute top-16 left-0 w-full bg-theme-blue p-4 rounded-lg shadow-lg `}
         >
           <NavLink
+            aria-label="Link to landing page"
             to="/"
             end
             className={({ isActive }) =>
@@ -44,6 +46,7 @@ function Header(): React.ReactElement {
             <FaHouse className="inline mr-2" /> Home
           </NavLink>
           <NavLink
+            aria-label="Link to venues page"
             to="/venues"
             className={({ isActive }) =>
               isActive
@@ -56,6 +59,7 @@ function Header(): React.ReactElement {
           </NavLink>
           <NavLink
             to="/contact"
+            aria-label="Link to contact page"
             className={({ isActive }) =>
               isActive
                 ? "active-link block text-white px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
@@ -70,6 +74,7 @@ function Header(): React.ReactElement {
       <div className="hidden custom:flex items-center">
         <NavLink
           to="/"
+          aria-label="Link to landing page"
           end
           className={({ isActive }) =>
             isActive
@@ -83,6 +88,7 @@ function Header(): React.ReactElement {
           Home
         </NavLink>
         <NavLink
+          aria-label="Link to venues page"
           to="/venues"
           className={({ isActive }) =>
             isActive
@@ -97,6 +103,7 @@ function Header(): React.ReactElement {
         </NavLink>
         <NavLink
           to="/contact"
+          aria-label="Link to contact page"
           className={({ isActive }) =>
             isActive
               ? "active-link text-white inline-flex justify-between items-center align-middle px-3 py-2 rounded-md text-lg font-medium hover:shadow-lg"
@@ -110,7 +117,7 @@ function Header(): React.ReactElement {
         </NavLink>
       </div>
       <div className="absolute left-1/2 transform -translate-x-1/2 -top-10 cursor-pointer hover:animate-pulse">
-        <NavLink to="/" end>
+        <NavLink to="/" aria-label="Link to landing page" end>
           <img
             className="w-28 sm:w-32 custom:w-fit p-5 mt-5 mb-5"
             src="/assets/holistayLogo.png"
@@ -122,13 +129,15 @@ function Header(): React.ReactElement {
         {isLoggedIn ? (
           <>
             <NavLink
+              aria-label="Link to user profile"
               to="/profilemanager"
               className={({ isActive }) => (isActive ? "active-link" : " ")}
             >
-              <RxAvatar className="text-2xl md:text-4xl font-bold text-white hover:text-theme-green duration-300 hover:font-extrabold" />
+              <RxAvatar className="text-2xl md:text-4xl font-bold text-white hover:text-slate-400 duration-300 hover:font-extrabold" />
             </NavLink>
             <button
               onClick={logout}
+              aria-label="Toggle Logout"
               className="text-white px-2 py-1 sm:px-4 sm:py-2 text-xs sm:text-lg rounded-md font-medium hover:shadow-lg"
             >
               Logout
@@ -138,12 +147,14 @@ function Header(): React.ReactElement {
           <>
             <button
               onClick={handleOpenLogin}
+              aria-label="Toggle Login"
               className="text-white px-2 py-1 sm:px-4 sm:py-2 text-xs sm:text-lg rounded-md font-medium mr-1 sm:mr-4 hover:shadow-lg"
             >
               Login
             </button>
             <button
               onClick={handleOpenRegister}
+              aria-label="Toggle Register"
               className="bg-white text-slate-900 px-2 py-1 sm:px-6 sm:py-3 rounded-md text-xs sm:text-lg font-medium hover:shadow-2xl"
             >
               Sign up

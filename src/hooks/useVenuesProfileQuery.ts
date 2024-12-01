@@ -2,7 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import useMyStore from "../store";
 import { apiKey, apiUrl, profilesEndpoint } from "../utils/baseUrlAndEndpoints";
 
-const fetchProfile = async (queryParams = {}) => {
+interface QueryParams {
+  _bookings?: string | boolean;
+  _owner?: string | boolean;
+  [key: string]: string | boolean | undefined;
+}
+
+const fetchVenuesProfile = async (queryParams: QueryParams = {}) => {
   const { accessToken } = useMyStore.getState();
   const user = useMyStore.getState().user;
   const userName = user?.name;
@@ -10,8 +16,12 @@ const fetchProfile = async (queryParams = {}) => {
     throw new Error("User name is undefined");
   }
 
-  const queryString = new URLSearchParams(queryParams).toString();
-  const url = `${apiUrl}${profilesEndpoint}/${userName}${
+  const queryParamsWithStrings = Object.fromEntries(
+    Object.entries(queryParams).map(([key, value]) => [key, String(value)])
+  );
+
+  const queryString = new URLSearchParams(queryParamsWithStrings).toString();
+  const url = `${apiUrl}${profilesEndpoint}/${userName}/venues${
     queryString ? `?${queryString}` : ""
   }`;
 
@@ -28,13 +38,13 @@ const fetchProfile = async (queryParams = {}) => {
   return result.data;
 };
 
-function useProfileQuery(queryParams = {}) {
+function useVenuesProfileQuery(queryParams: QueryParams = {}) {
   return useQuery({
-    queryKey: ["profile", queryParams],
-    queryFn: () => fetchProfile(queryParams),
+    queryKey: ["venues", queryParams],
+    queryFn: () => fetchVenuesProfile(queryParams),
     staleTime: 0,
     enabled: true,
   });
 }
 
-export default useProfileQuery;
+export default useVenuesProfileQuery;

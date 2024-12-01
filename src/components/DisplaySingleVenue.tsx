@@ -3,6 +3,7 @@ import SkeletonSingleVenue from "./ui/loaders/SkeletonSingleVenue";
 import useApiQuery from "../hooks/useApiQuery";
 import { CalcRatings } from "./calculators/CalcRatings";
 import { FaGlobe } from "react-icons/fa";
+import shortenText from "../utils/shortenText";
 
 function DisplaySingleVenue() {
   const { id } = useParams<{ id: string }>();
@@ -18,6 +19,9 @@ function DisplaySingleVenue() {
   }
 
   if (data) {
+    const shortName = shortenText(data.name, 20);
+    const shortDescription = shortenText(data.description, 1000);
+
     return (
       <div className="flex flex-col items-evenly mt-5">
         <div className="w-full flex flex-col xl:flex-row justify-evenly items-center">
@@ -31,51 +35,57 @@ function DisplaySingleVenue() {
             ) : (
               <div className="flex flex-row align-middle items-center justify-center">
                 <FaGlobe className="text-2xl text-theme-blue mx-5" />
-                <p>Sorry, no image available!</p>
+                <div>Sorry, no image available!</div>
               </div>
             )}
           </div>
-          <div className="flex flex-col w-10/12 lg:w-5/12 items-center align-end justify-evenly md:items-start border-solid border-2 border-slate-400 shadow-sm p-5 rounded-lg m-5">
-            <div className="text-slate-800 text-3xl mx-auto md:text-4xl lg:text-5xl text-center font-extrabold mb-5">
-              {data.name}
+          <div className="flex flex-col w-10/12 lg:w-5/12 items-center flex-wrap align-end justify-evenly md:items-center border-solid border-2 border-slate-400 shadow-sm p-5 rounded-lg m-5">
+            <div className="text-slate-800 text-l mx-auto md:text-4xl lg:text-3xl text-center font-extrabold mb-5 text-wrap">
+              {shortName}
               <CalcRatings rating={data.rating} />
             </div>
-            <p className="text-slate-800 w-10/12 text-base md:text-lg lg:text-xl font-base mb-5">
-              {data.description}
-            </p>
-            <div className="text-slate-900 text-base md:text-lg lg:text-xl font-bold mb-2">
+            <div className="text-slate-800 text-xs md:text-lg lg:text-xl font-semibold mb-5">
+              {shortDescription}
+            </div>
+            <div className="text-slate-800 text-base md:text-lg lg:text-xl font-semibold mb-3">
+              {data.location?.address}
+            </div>
+            <div className="text-slate-900 text-base font-bold md:text-lg lg:text-lg mb-1">
               {data.location?.city}
             </div>
-            <div className="text-slate-800 text-base md:text-lg lg:text-xl font-bold mb-2">
+            <div className="text-slate-800 text-base md:text-lg lg:text-xl font-medium mb-5">
               {data.location?.country}
             </div>
+
+            <div className="border-2 p-4">
+              <div className="text-slate-800 text-base md:text-lg lg:text-2xl font-medium mb-2">
+                Parking: {data.meta.parking ? "Yes" : "No"}
+              </div>
+              <div className="text-slate-800 text-base md:text-lg lg:text-2xl font-medium mb-2">
+                WiFi: {data.meta.wifi ? "Yes" : "No"}
+              </div>
+              <div className="text-slate-800 text-base md:text-lg lg:text-2xl font-medium mb-2">
+                Pets Allowed: {data.meta.pets ? "Yes" : "No"}
+              </div>
+              <div className="text-slate-800 text-base md:text-lg lg:text-2xl font-medium mb-5">
+                Breakfast: {data.meta.breakfast ? "Yes" : "No"}
+              </div>
+            </div>
             <div className="flex flex-row items-center md:items-start">
-              <div className="text-slate-800 text-base md:text-lg lg:text-2xl font-bold mb-2 pe-10">
-                {data.name}
-              </div>
-              <div className="text-slate-800 text-base md:text-lg lg:text-2xl font-bold mb-2 pe-10">
-                {data.meta.parking}
-              </div>
-              <div className="text-slate-800 text-base md:text-lg lg:text-2xl font-bold mb-2 pe-10">
-                {data.meta.wifi}
-              </div>
-              <div className="text-slate-800 text-base md:text-lg lg:text-2xl font-bold mb-2 pe-10">
-                {data.meta.pets}
-              </div>
-              <div className="text-slate-800 text-base md:text-lg lg:text-2xl font-bold mb-2 pe-10">
-                {data.meta.breakfast}
-              </div>
-              <div className="flex flex-col items-center md:items-start">
+              <div className="block mx-auto text-center">
                 <div className="text-slate-800 text-base md:text-lg lg:text-2xl font-bold">
                   ${data.price}
                 </div>
-                <div className="text-slate-800 text-sm md:text-base lg:text-lg font-medium mb-10">
+                <div className="text-slate-800 text-sm md:text-base lg:text-lg font-medium mb-5">
                   Per Night
                 </div>
               </div>
             </div>
             <Link to={`/booking/${id}`}>
-              <button className="px-4 py-2 bg-theme-green text-white font-large rounded-md">
+              <button
+                aria-label="booking navigation"
+                className="px-4 py-2 bg-theme-green text-white font-large rounded-md"
+              >
                 Book Now
               </button>
             </Link>

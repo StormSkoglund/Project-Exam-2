@@ -47,12 +47,6 @@ function SelectBooking() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (venue) {
-      console.log("Venue data:", venue);
-    }
-  }, [venue]);
-
-  useEffect(() => {
     if (!venue) {
       refetch();
     }
@@ -74,7 +68,6 @@ function SelectBooking() {
 
   const isDateBooked = (date: Date) => {
     if (!venue || !venue.bookings) {
-      console.log("Venue or bookings data is not available");
       return false;
     }
 
@@ -84,7 +77,6 @@ function SelectBooking() {
       return date >= bookingStart && date <= bookingEnd;
     });
 
-    console.log(`Date: ${date.toDateString()}, Booked: ${result}`);
     return result;
   };
 
@@ -103,11 +95,9 @@ function SelectBooking() {
     if (view === "month") {
       const today = new Date();
       if (date.toDateString() === today.toDateString()) {
-        console.log(today);
         return "bg-white border-dashed border-2 border-theme-green text-black rounded-full font-bold";
       }
       if (isDateBooked(date)) {
-        console.log(`Date: ${date.toDateString()} is booked`);
         return "bg-red-400 text-white rounded-full";
       }
 
@@ -127,17 +117,12 @@ function SelectBooking() {
 
   const createBooking = async (booking: Booking) => {
     const { accessToken } = useMyStore.getState();
-    console.log("Access Token:", accessToken);
-    console.log("API Key:", apiKey);
-    console.log("Booking Data:", booking);
 
     const headers = {
       "Content-Type": "application/json",
       Authorization: `Bearer ${accessToken}`,
       "X-Noroff-API-Key": apiKey,
     };
-
-    console.log("Headers:", headers);
 
     try {
       const response = await fetch(`${apiUrl}${bookings}`, {
@@ -153,7 +138,6 @@ function SelectBooking() {
         );
       }
 
-      console.log("Booking created successfully");
       setErrorMessage(null);
       navigate("/checkout");
     } catch (error) {
@@ -171,7 +155,6 @@ function SelectBooking() {
 
   const handleBooking = () => {
     if (!venueId) {
-      console.error("Venue ID is undefined");
       return;
     }
 
@@ -287,6 +270,7 @@ function SelectBooking() {
       <div className="text-center">
         <button
           onClick={handleBooking}
+          aria-label="Toggle Venue booking"
           className="mt-4 bg-theme-green text-white py-3 px-5 rounded hover:shadow-2xl hover:bg-green-800"
         >
           Book Now

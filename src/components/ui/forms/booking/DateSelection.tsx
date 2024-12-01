@@ -30,9 +30,9 @@ function DateSelection() {
 
   const handleBooking = () => {
     if (isDateAvailable(selectedDateFrom, selectedDateTo)) {
-      console.log("Dates are available for booking");
+      return "";
     } else {
-      console.log("Selected dates are already booked");
+      return "";
     }
   };
 
@@ -49,7 +49,9 @@ function DateSelection() {
         value={selectedDateTo}
         onChange={(e) => setSelectedDateTo(e.target.value)}
       />
-      <button onClick={handleBooking}>Book Now</button>
+      <button aria-label="Toggle Book Selected Dates" onClick={handleBooking}>
+        Book Now
+      </button>
     </div>
   );
 }

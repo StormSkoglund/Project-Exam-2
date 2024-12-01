@@ -17,9 +17,13 @@ export const createVenueSchema = yup
     price: yup
       .number()
       .required("Price is required")
+      .min(0, "Price must be at least 0")
+      .max(10000, "Price cannot be more than 10000")
       .positive("Price must be a positive number"),
     maxGuests: yup
       .number()
+      .min(0, "Guests must be at least 0")
+      .max(100, "Guests cannot be more than 100")
       .required("Maximum number of guests is required")
       .positive("Maximum number of guests must be a positive number")
       .integer("Maximum number of guests must be an integer"),

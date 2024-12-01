@@ -55,3 +55,12 @@ Images:
 
 Contact page:
 PRODUCTION, M. (2023). A woman wearing a headset while working on a laptop. [Photograph]. Available at: https://www.pexels.com/photo/a-woman-wearing-a-headset-while-working-on-a-laptop-7709287/(Accessed: 22 November 2024).
+
+Landing page:
+Pezeta, L. (2019). Man raising his hands up. [Photograph]. Available at: https://www.pexels.com/photo/man-raising-his-hands-up-2418597/ (Accessed: 1 December 2024).
+
+Wrn, T. (2023). Woman on wooden bridge in tropical resort. [Photograph]. Available at: https://www.pexels.com/photo/woman-on-wooden-bridge-in-tropical-resort-29564297/ (Accessed: 1 December 2024).
+
+Claire, R. (2020). Unrecognizable traveler in hammock against bed in tropical resort. [Photograph]. Available at: https://www.pexels.com/photo/unrecognizable-traveler-in-hammock-against-bed-in-tropical-resort-4577681/ (Accessed: 1 December 2024).
+
+Mendes, I. (2019). Wooden house. [Photograph]. Available at: https://www.pexels.com/photo/wooden-house-1795506/ (Accessed: 1 December 2024).
