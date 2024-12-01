@@ -1,53 +1,46 @@
-# React + TypeScript + Vite
+# Project-Exam-2
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Alt text](/public/assets/hero-image-holistay-min.png)
 
-Currently, two official plugins are available:
+# Welcome to HoliStay, your ultimate destination for booking accommodations. Discover unique venues and manage your bookings effortlessly.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## Expanding the ESLint configuration
+This site was built with React, Vite, and TypeScript. Tailwind CSS was used for styling, along with libraries such as React-Icons and .
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+# Accommodation Booking Assignment
 
-- Configure the top-level `parserOptions` property like this:
+## Goal
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
-```
+Build an accommodation booking site using React, Vite, and TypeScript.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+# Brief
 
-```js
-// eslint.config.js
-import react from "eslint-plugin-react";
+API: Holidaze API
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: "18.3" } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs["jsx-runtime"].rules,
-  },
-});
-```
+# Pages to Build
+
+Homepage
+
+Individual Venue Page
+
+Booking Page
+
+Booking Success Page
+
+Contact Page
+
+# How to Install
+
+## Installation Steps:
+
+Clone the repository using https://github.com/StormSkoglund/Project-Exam-2.git
+
+To install the dependencies, please use the following command: npm install.
+
+To run the local host, type npm run dev in the terminal.
+
+Static host: https://project-exam2.netlify.app/
 
 Sources:
 
