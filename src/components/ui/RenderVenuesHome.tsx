@@ -3,12 +3,13 @@ import useVenues from "../../hooks/useFetchedVenues";
 import { Venue } from "../../hooks/useFetchedVenues";
 import { FaGlobe } from "react-icons/fa";
 import shortenText from "../../utils/shortenText";
+import SkeletonVenuesHome from "./loaders/SkeletonVenueHome";
 
 function RenderVenuesHome() {
   const { isLoading, isError, data, error } = useVenues();
 
   if (isLoading) {
-    return <span>Loading...</span>;
+    return <SkeletonVenuesHome />;
   }
 
   if (isError) {

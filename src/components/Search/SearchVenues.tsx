@@ -24,7 +24,7 @@ function SearchVenues() {
     useFetchedVenuesSearch(debouncedSearchTerm);
 
   if (isLoading) {
-    return <span className="text-center">Loading...</span>;
+    return <span className="text-center"></span>;
   }
 
   if (isError) {

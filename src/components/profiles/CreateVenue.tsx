@@ -106,7 +106,7 @@ function CreateVenue() {
               htmlFor={mediaUrlId}
               className="block text-sm font-medium text-gray-700"
             >
-              Media URL
+              Media URL*
             </label>
             <input
               type="url"
@@ -126,7 +126,7 @@ function CreateVenue() {
               htmlFor={mediaAltId}
               className="block text-sm font-medium text-gray-700"
             >
-              Media Alt Text
+              Media Alt Text*
             </label>
             <input
               type="text"

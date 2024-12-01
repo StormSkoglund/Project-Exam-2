@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
-import SkeletonSingleVenue from "./ui/loaders/SkeletonSingleVenue";
 import useVenueWithBookings from "../hooks/useVenueWithBookings";
 import { CalcRatings } from "./calculators/CalcRatings";
 import { FaGlobe } from "react-icons/fa";
 import shortenText from "../utils/shortenText";
+import SkeletonVenueBooking from "./ui/loaders/SkeletonVenueBooking";
 
 function DisplayVenueBooking() {
   const { venueId } = useParams<{ venueId: string }>();
@@ -15,7 +15,7 @@ function DisplayVenueBooking() {
   } = useVenueWithBookings(venueId || "");
 
   if (isLoading) {
-    return <SkeletonSingleVenue />;
+    return <SkeletonVenueBooking />;
   }
 
   if (isError) {

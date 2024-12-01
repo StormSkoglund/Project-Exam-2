@@ -4,13 +4,14 @@ import { Venue } from "../../hooks/useFetchedVenues";
 import { useState } from "react";
 import { FaGlobe } from "react-icons/fa";
 import shortenText from "../../utils/shortenText";
+import SkeletonRenderVenues from "./loaders/SkeletonRenderVenues";
 
 function RenderVenues() {
   const { isLoading, isError, data, error } = useVenues();
   const [visibleCount, setVisibleCount] = useState(9);
 
   if (isLoading) {
-    return <span>Loading...</span>;
+    return <SkeletonRenderVenues />;
   }
 
   if (isError) {

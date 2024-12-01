@@ -116,17 +116,22 @@ function UserProfile() {
               venues.map((venue: Venue) => (
                 <div
                   key={venue.id}
-                  className="border text-white p-4 mb-4 w-10/12 sm:w-6/12 mx-auto bg-theme-blue rounded-lg shadow-2xl"
+                  className="border text-white p-4 mb-4 w-full sm:w-6/12 mx-auto bg-theme-blue rounded-lg shadow-2xl"
                 >
                   {venue.media && venue.media.length > 0 && (
                     <img
-                      className="w-64 float-right shadow-xl rounded-2xl"
+                      className="w-40 h-auto block mx-auto md:float-right shadow-xl rounded-2xl"
                       src={venue.media[0].url}
                       alt={venue.media[0].alt}
                     />
                   )}
-                  <h4 className="text-xl mb-5">{venue.name}</h4>
-                  <p className="p-2 ">{venue.description}</p>
+                  <h4
+                    className="text-xl mt-5 text-center
+                  "
+                  >
+                    {venue.name}
+                  </h4>
+                  <p className="p-2">{venue.description}</p>
                   <p className="px-2 font-semibold">{venue.location.address}</p>
                   <p className="px-2 font-semibold">{venue.location.country}</p>
                   <p className="px-2 pb-2 font-semibold">
@@ -137,6 +142,20 @@ function UserProfile() {
                     Max Guests: {venue.maxGuests}
                   </p>
                   <p className=" p-2 font-normal">Rating: {venue.rating}</p>
+                  <div className="border-2 p-4">
+                    <div className="text-white text-base md:text-lg lg:text-2xl font-medium mb-2">
+                      Parking: {venue.meta.parking ? "Yes" : "No"}
+                    </div>
+                    <div className="text-white text-base md:text-lg lg:text-2xl font-medium mb-2">
+                      WiFi: {venue.meta.wifi ? "Yes" : "No"}
+                    </div>
+                    <div className="text-white text-base md:text-lg lg:text-2xl font-medium mb-2">
+                      Pets Allowed: {venue.meta.pets ? "Yes" : "No"}
+                    </div>
+                    <div className="text-white text-base md:text-lg lg:text-2xl font-medium mb-5">
+                      Breakfast: {venue.meta.breakfast ? "Yes" : "No"}
+                    </div>
+                  </div>
                   <p className=" p-2 font-normal textt-center">
                     Bookings By Users:
                   </p>

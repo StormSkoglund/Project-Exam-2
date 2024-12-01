@@ -42,7 +42,7 @@ function useVenuesProfileQuery(queryParams: QueryParams = {}) {
   return useQuery({
     queryKey: ["venues", queryParams],
     queryFn: () => fetchVenuesProfile(queryParams),
-    staleTime: Infinity,
+    staleTime: 0,
     enabled: true,
   });
 }

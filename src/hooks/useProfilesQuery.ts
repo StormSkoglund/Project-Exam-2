@@ -32,7 +32,7 @@ function useProfileQuery(queryParams = {}) {
   return useQuery({
     queryKey: ["profile", queryParams],
     queryFn: () => fetchProfile(queryParams),
-    staleTime: Infinity,
+    staleTime: 0,
     enabled: true,
   });
 }
