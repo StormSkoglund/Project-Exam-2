@@ -44,7 +44,7 @@ function DisplaySingleVenue() {
               {shortName}
               <CalcRatings rating={data.rating} />
             </div>
-            <div className="text-slate-800 text-xs md:text-lg lg:text-xl font-semibold mb-5">
+            <div className="text-slate-800 text-xs md:text-lg lg:text-xl font-normal mb-5">
               {shortDescription}
             </div>
             <div className="text-slate-800 text-base md:text-lg lg:text-xl font-semibold mb-3">
