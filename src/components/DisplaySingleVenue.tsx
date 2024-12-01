@@ -35,7 +35,7 @@ function DisplaySingleVenue() {
             ) : (
               <div className="flex flex-row align-middle items-center justify-center">
                 <FaGlobe className="text-2xl text-theme-blue mx-5" />
-                <p>Sorry, no image available!</p>
+                <div>Sorry, no image available!</div>
               </div>
             )}
           </div>
@@ -44,9 +44,9 @@ function DisplaySingleVenue() {
               {shortName}
               <CalcRatings rating={data.rating} />
             </div>
-            <p className="text-slate-800 text-xs md:text-lg lg:text-xl font-semibold mb-5">
+            <div className="text-slate-800 text-xs md:text-lg lg:text-xl font-semibold mb-5">
               {shortDescription}
-            </p>
+            </div>
             <div className="text-slate-800 text-base md:text-lg lg:text-xl font-semibold mb-3">
               {data.location?.address}
             </div>

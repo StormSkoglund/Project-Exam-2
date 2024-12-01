@@ -30,9 +30,9 @@ function DateSelection() {
 
   const handleBooking = () => {
     if (isDateAvailable(selectedDateFrom, selectedDateTo)) {
-      console.log("Dates are available for booking");
+      return "";
     } else {
-      console.log("Selected dates are already booked");
+      return "";
     }
   };
 

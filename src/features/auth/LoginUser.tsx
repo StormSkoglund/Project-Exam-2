@@ -31,7 +31,7 @@ function LoginUser() {
       const response = await postUserLogin(data);
       setIsLoggedIn(true);
       setAccessToken(response.accessToken);
-      console.log(data);
+
       reset();
       handleCloseLogin();
     } catch (error) {

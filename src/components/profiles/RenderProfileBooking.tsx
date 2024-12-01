@@ -14,7 +14,6 @@ const RenderProfileBooking: React.FC = () => {
         const response = await getBookingsByProfile();
 
         const data = await response.json();
-        console.log("Parsed Data:", data);
         setBookings(data.data);
         setIsLoading(false);
       } catch (error) {

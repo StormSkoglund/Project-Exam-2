@@ -15,7 +15,6 @@ export async function postCreateVenue(createvenue: CreateVenueType) {
   });
 
   const json = await response.json();
-  console.log(response);
 
   if (!response.ok) {
     console.error(

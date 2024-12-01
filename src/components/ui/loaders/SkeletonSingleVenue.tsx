@@ -10,9 +10,9 @@ function SkeletonSingleVenue() {
             <div className="w-3/4 h-8 bg-gray-300 rounded-md mb-2"></div>
             <div className="w-1/2 h-6 bg-gray-300 rounded-md"></div>
           </div>
-          <p className="text-slate-800 text-xs md:text-lg lg:text-xl font-semibold mb-5">
+          <div className="text-slate-800 text-xs md:text-lg lg:text-xl font-semibold mb-5">
             <div className="w-full h-24 bg-gray-300 rounded-md"></div>
-          </p>
+          </div>
           <div className="text-slate-800 text-base md:text-lg lg:text-xl font-semibold mb-3">
             <div className="w-3/4 h-6 bg-gray-300 rounded-md"></div>
           </div>

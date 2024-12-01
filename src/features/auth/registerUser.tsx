@@ -24,6 +24,7 @@ function RegisterUser() {
   const confirmPasswordId = useId();
   const venueManagerId = useId();
   const [isVenueManager, setIsVenueManager] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -43,7 +44,11 @@ function RegisterUser() {
       handleCloseRegister();
       handleOpenLogin();
     } catch (error) {
-      console.error("Error registering user:", error);
+      if (error instanceof Error) {
+        setErrorMessage(`Error registering user: ${error.message}`);
+      } else {
+        setErrorMessage("An unknown error occurred.");
+      }
     }
   };
 
@@ -164,6 +169,11 @@ function RegisterUser() {
             Create Account
           </button>
         </form>
+        {errorMessage && (
+          <p className="mt-2 text-sm text-red-500 text-center">
+            {errorMessage}
+          </p>
+        )}
       </div>
     </div>
   );

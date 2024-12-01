@@ -50,7 +50,7 @@ function UserProfile() {
       await deleteVenue(venueId);
       window.location.reload();
     } catch (error) {
-      console.error("Error deleting venue:", error);
+      return error;
     }
   };
 
@@ -186,7 +186,7 @@ function UserProfile() {
                     <p className="p-2 text-center text-white font-bold">
                       No bookings for this venue.
                     </p>
-                  )}{" "}
+                  )}
                   <div className="flex flex-row justify-between">
                     <button
                       aria-label="Venue Update"

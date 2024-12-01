@@ -18,13 +18,11 @@ export async function postUserLogin(
   });
 
   const json = await response.json();
-  console.log("Response JSON:", json);
 
   if (!response.ok) {
     throw new Error(json.errors?.[0]?.message || "Login failed");
   }
 
-  console.log("Received Access Token:", json.data.accessToken);
   useMyStore.getState().setAccessToken(json.data.accessToken);
   useMyStore.getState().setIsLoggedIn(true);
 

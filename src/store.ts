@@ -100,12 +100,10 @@ const useMyStore = create<StoreState>((set) => ({
     set({ isLoggedIn });
   },
   setAccessToken: (token) => {
-    console.log("Setting accessToken to localStorage:", token);
     localStorage.setItem("accessToken", token);
     set({ accessToken: token });
   },
   logout: () => {
-    console.log("Logging out and removing items from localStorage");
     localStorage.removeItem("user");
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("accessToken");
