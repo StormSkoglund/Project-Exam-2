@@ -287,6 +287,7 @@ function SelectBooking() {
       <div className="text-center">
         <button
           onClick={handleBooking}
+          aria-label="Toggle Venue booking"
           className="mt-4 bg-theme-green text-white py-3 px-5 rounded hover:shadow-2xl hover:bg-green-800"
         >
           Book Now

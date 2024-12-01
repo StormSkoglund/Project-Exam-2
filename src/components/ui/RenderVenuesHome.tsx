@@ -28,13 +28,13 @@ function RenderVenuesHome() {
         {slicedMap.map((result: Venue, index: number) => {
           const shortVenueName = shortenText(result.name, 25);
           return (
-            <Link key={result.id} to={`/venuepage/${result.id}`}>
-              <li
-                key={index}
-                className="flex justify-center align-center m-2 relative"
-              >
+            <li
+              key={index}
+              className="flex justify-center align-center m-2 relative"
+            >
+              <Link to={`/venuepage/${result.id}`}>
                 {result.media.length > 0 ? (
-                  <div className="relative w-72 h-80 md:w-96 md:h-96 xl:w-80 xl:h-96 hover:shadow-2xl hover:scale-105 duration-150">
+                  <div className="relative w-72 h-80 md:w-96 md:h-96 xl:w-72 xl:h-96 hover:shadow-2xl hover:scale-105 duration-150">
                     <img
                       className="w-full h-full object-cover rounded-md shadow-lg"
                       src={result.media[0].url}
@@ -63,7 +63,10 @@ function RenderVenuesHome() {
                       </div>
                     </div>
                     <div className="flex flex-row justify-center">
-                      <button className="px-2 md:px-4 py-2 bg-theme-green -mt-12 mb-5 z-10 text-white font-large rounded-md">
+                      <button
+                        aria-label="Toggle Booking Checkout"
+                        className="px-2 md:px-4 py-2 bg-theme-green -mt-12 mb-5 z-10 text-white font-large rounded-md"
+                      >
                         Book Now
                       </button>
                     </div>
@@ -74,13 +77,16 @@ function RenderVenuesHome() {
                     <FaGlobe className="text-2xl text-theme-blue mx-5 hover:drop-shadow-2xl" />
                     <p>Sorry, no image available!</p>
 
-                    <button className="px-5 py-2 border-solid border-2 shadow-md hover:shadow-2xl text-slate-800">
+                    <button
+                      aria-label="Toggle Venue No Image"
+                      className="px-5 py-2 border-solid border-2 shadow-md hover:shadow-2xl text-slate-800"
+                    >
                       Visit Anyway
                     </button>
                   </div>
                 )}
-              </li>
-            </Link>
+              </Link>
+            </li>
           );
         })}
       </ul>

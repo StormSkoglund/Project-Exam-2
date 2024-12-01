@@ -49,7 +49,9 @@ function DateSelection() {
         value={selectedDateTo}
         onChange={(e) => setSelectedDateTo(e.target.value)}
       />
-      <button onClick={handleBooking}>Book Now</button>
+      <button aria-label="Toggle Book Selected Dates" onClick={handleBooking}>
+        Book Now
+      </button>
     </div>
   );
 }

@@ -79,6 +79,7 @@ function UpdateAvatar() {
 
           <button
             type="submit"
+            aria-label="Update avatar button"
             className="w-full px-4 py-2 text-sm font-medium text-white bg-theme-green rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
           >
             Update Avatar

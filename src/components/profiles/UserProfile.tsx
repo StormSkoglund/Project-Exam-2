@@ -92,6 +92,7 @@ function UserProfile() {
           </p>
           <button
             onClick={handleOpenUpdateAvatar}
+            aria-label="Toggle Avatar Updater"
             className="bg-yellow-700 block mx-auto text-white px-4 py-2 rounded-md "
           >
             Update Avatar
@@ -104,6 +105,7 @@ function UserProfile() {
             <h3 className="text-2xl text-center m-10">Managed Venues</h3>
             <button
               onClick={handleOpenCreateVenue}
+              aria-label="Toggle Create Venue"
               className="text-center block m-5 bg-theme-green mx-auto text-white px-4 py-2 rounded-md"
             >
               Create Venue
@@ -168,6 +170,7 @@ function UserProfile() {
                   )}{" "}
                   <div className="flex flex-row justify-between">
                     <button
+                      aria-label="Venue Update"
                       onClick={() => {
                         setSelectedVenue(venue);
                         handleOpenUpdateVenue();
@@ -177,6 +180,7 @@ function UserProfile() {
                       Update Venue
                     </button>
                     <button
+                      aria-label="Delete Venue"
                       onClick={() => handleDeleteVenue(venue.id)}
                       className="bg-red-500 text-white px-4 py-2 rounded-md mt-4 ml-2"
                     >
@@ -221,8 +225,9 @@ function UserProfile() {
             Email: {profile.email}
           </p>
           <button
+            aria-label="Toggle Update Avatar"
             onClick={handleOpenUpdateAvatar}
-            className="bg-yellow-500 text-white px-4 py-2 rounded-md"
+            className="bg-yellow-700 mx-auto block m-5 text-white px-4 py-2 rounded-md"
           >
             Update Avatar
           </button>

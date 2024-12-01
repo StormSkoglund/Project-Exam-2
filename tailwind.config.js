@@ -8,8 +8,8 @@ export default {
         montserrat: ["Montserrat", "Helvetica", "Arial", "sans-serif"],
       },
       colors: {
-        "theme-blue": "#1E6F98",
-        "theme-green": "#48924A",
+        "theme-blue": "#246586",
+        "theme-green": "#336835",
       },
       opacity: {
         xs: "0.98",

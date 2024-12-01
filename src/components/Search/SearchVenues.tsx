@@ -41,14 +41,14 @@ function SearchVenues() {
   );
 
   return (
-    <div className="w-full flex items-center flex-col justify-center m-5 relative">
-      <label htmlFor="search" className="w-2/4 text-md font-bold text-gray-800">
+    <div className="w-full flex items-center flex-col justify-center mt-5 relative">
+      <label htmlFor="search" className=" text-md font-bold text-gray-800">
         Search
       </label>
 
       <input
         autoComplete="off"
-        className="border-solid border-2 border-theme-blue rounded-md p-2 w-6/12 relative"
+        className="border-solid border-2 border-theme-blue rounded-md p-2 w-4/6 sm:w-10/12 md:w-8/12 lg:w-6/12 relative text-xs md:text-base lg:text-lg"
         value={searchTerm}
         id="search"
         placeholder="What Is Your Destination?"

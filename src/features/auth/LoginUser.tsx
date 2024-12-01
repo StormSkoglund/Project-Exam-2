@@ -44,6 +44,7 @@ function LoginUser() {
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md relative">
         <button
           onClick={handleCloseLogin}
+          aria-label="Toggle Close Login"
           className="absolute top-2 right-2 text-slate-800 font-bold"
         >
           X
@@ -92,6 +93,7 @@ function LoginUser() {
           <span className="text-sm">*All fields are required.</span>
           <button
             type="submit"
+            aria-label="Toggle Submit Login Form"
             className="w-full px-4 py-2 text-sm font-medium text-white bg-theme-green border border-transparent rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
           >
             Log In

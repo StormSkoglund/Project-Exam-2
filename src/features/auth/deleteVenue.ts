@@ -16,7 +16,9 @@ const deleteVenue = async (venueId: string) => {
     throw new Error("Failed to delete venue");
   }
 
-  return response.json();
+  if (response.status !== 204) {
+    return response.json();
+  }
 };
 
 export default deleteVenue;

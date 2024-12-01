@@ -345,6 +345,7 @@ function CreateVenue() {
           <p>* Required Fields</p>
           <button
             type="submit"
+            aria-label="Submit venue registration form"
             className="w-full px-4 py-2 text-sm font-medium text-white bg-theme-green border border-transparent rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
           >
             Create Venue
