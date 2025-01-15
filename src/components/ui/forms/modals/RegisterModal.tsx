@@ -27,7 +27,7 @@ const RegisterModal: React.FC = () => {
   return (
     <>
       {openRegisterModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div
             id="modal-register-dialog"
             className="bg-transparent bg-blend-saturation p-6 rounded-lg shadow-lg relative w-full"
