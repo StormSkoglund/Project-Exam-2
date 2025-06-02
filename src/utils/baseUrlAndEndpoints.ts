@@ -1,3 +1,8 @@
+/**
+ * Utility functions and constants for API endpoints and keys.
+ * Provides environment-based URLs for use throughout the app.
+ */
+
 export const apiUrl = import.meta.env.VITE_API_URL;
 export const loginEndpoint = import.meta.env.VITE_API_ENDPOINT_LOGIN;
 export const registerEndpoint = import.meta.env.VITE_API_ENDPOINT_REGISTER;

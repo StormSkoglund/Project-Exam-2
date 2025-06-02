@@ -41,7 +41,7 @@ const Home: React.FC = () => {
         <div className="flex flex-row justify-end w-10/12">
           <button
             aria-label="Toggle Link To Venues"
-            className="border-solid border-2 text-sm md:text-large px-2 py-1 md:px-5 md:py-2 m-2 shadow-md hover:shadow-2xl"
+            className="bg-cyan-700 text-white border-solid border-2 text-sm md:text-large px-2 py-1 md:px-5 md:py-2 m-2 shadow-md hover:bg-blue-800 hover:shadow-2xl transition-colors duration-200"
           >
             Go Explore
           </button>
@@ -68,33 +68,33 @@ const Home: React.FC = () => {
           <button
             onClick={handleOpenRegister}
             aria-label="Toggle Open Registration"
-            className="bg-white text-slate-900 float-right me-12 px-2 py-1 sm:px-6 sm:py-3 rounded-md text-xs sm:text-lg font-medium hover:shadow-2xl border shadow-md"
+            className=" bg-cyan-700 text-white float-right me-12 px-2 py-1 sm:px-6 sm:py-3 rounded-md text-xs sm:text-lg font-medium hover:bg-blue-800 hover:shadow-2xl border shadow-md transition-colors duration-200"
           >
             Register Now
           </button>
         </div>
 
-        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center flex-wrap">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center flex-wrap gap-4">
           <img
             src="/assets/diego.jpg"
             alt="A man in a jungle setting, arms stretched into the sky"
-            className="w-72 h-auto md:w-80 md:h-auto lg:w-96 lg:h-auto rounded-lg shadow-2xl mb-5 lg:mb-0"
+            className="w-60 h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover rounded-lg shadow-2xl mb-5 lg:mb-0"
           />
 
           <img
             src="/assets/jungle-bridge.jpg"
             alt="A woman crossing a bridge in a jungle-village setting"
-            className="w-44 h-auto md:w-52 md:h-auto lg:w-60 lg:h-auto rounded-lg shadow-2xl mb-5 lg:mb-0 m-3"
+            className="w-60 h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover rounded-lg shadow-2xl mb-5 lg:mb-0 m-3"
           />
           <img
             src="/assets/jungle-room.jpg"
             alt="A woman sleeping in a hammock inside a room with a jungle view"
-            className="w-44 h-auto md:w-52 md:h-auto lg:w-60 lg:h-auto rounded-lg shadow-2xl mb-5 lg:mb-0 m-3"
+            className="w-60 h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover rounded-lg shadow-2xl mb-5 lg:mb-0 m-3"
           />
           <img
             src="/assets/jungle-hut.jpg"
             alt="A tree hut in a jungle-village setting"
-            className="w-44 h-auto md:w-52 md:h-auto lg:w-60 lg:h-auto rounded-lg shadow-2xl mb-5 lg:mb-0 m-3"
+            className="w-60 h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover rounded-lg shadow-2xl mb-5 lg:mb-0 m-3"
           />
         </div>
         <RegisterModal />
