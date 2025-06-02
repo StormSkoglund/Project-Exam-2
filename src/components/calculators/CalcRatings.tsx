@@ -4,6 +4,14 @@ import { CalcRatingsProps } from "../../utils/interfaces";
 
 // This is the star function that I used in the Frontend Frameworks exam, and modified for use in TypeScript and styling in Tailwind!
 
+/**
+ * Calculates and renders star ratings for a given rating value.
+ * Always displays 5 stars, with full, half, or empty states based on the rating.
+ * @param {Object} props - The component props.
+ * @param {number} props.rating - The rating value (0-5, can be decimal).
+ * @returns {JSX.Element} The rendered star rating component.
+ */
+
 export const CalcRatings: React.FC<CalcRatingsProps> = ({ rating }) => {
   const blueStars = "text-theme-blue text-2xl";
   const fullStar = <FaStar className={blueStars} />;

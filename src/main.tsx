@@ -12,7 +12,7 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
+        <RouterProvider router={router} future={{ v7_startTransition: true }} />
       </QueryClientProvider>
     </HelmetProvider>
   </StrictMode>
