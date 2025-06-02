@@ -42,7 +42,10 @@ const fetchAllVenues = async (): Promise<Venue[]> => {
     totalPages = result.meta.pageCount;
   }
 
-  return allVenues;
+  return allVenues
+    .filter((venue) => venue.media && venue.media.length > 0)
+    .filter((venue) => venue.name && !venue.name.includes("[object"))
+    .sort((a, b) => a.name.localeCompare(b.name));
 };
 
 function useFetchedVenues() {
